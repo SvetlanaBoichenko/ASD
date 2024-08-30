@@ -137,7 +137,9 @@ public class LinkedList {
         Node tmp = null;
 
         if (count() == 0) {
+            head = _nodeToInsert;
             tail = _nodeToInsert;
+            return;
         }
 
         if (_nodeAfter == tail) {
@@ -162,53 +164,21 @@ public class LinkedList {
         }
     }
 
-
-    // my func  creating list
-    public void add_nodes() {
-        addInTail(new Node(12));
-        addInTail(new Node(18));
-        addInTail(new Node(12));
-        addInTail(new Node(15));
-        addInTail(new Node(17));
-        addInTail(new Node(12));
-    }
-
-
-    public static void main(String[] args) {
-        LinkedList s_list = new LinkedList();
-        int n = 0;
-
-        s_list.add_nodes();
-        n = s_list.count();
-        ArrayList<Node> arr = s_list.findAll(12);
-
-        s_list.removeAll(12);
-        n = s_list.count();
-
-        s_list.clear();
-        n = s_list.count();
-    }
-
+  
 }
 
-    class Node {
-        public int value;
-        public Node next;
 
-        public Node(int _value) {
-            value = _value;
-            next = null;
-        }
+   class Node {
+     public int value;
+     public Node next;
+
+     public Node(int _value) {
+     value = _value;
+     next = null;
     }
+}
 
 
-
-
-
-
-  //  public  Node sum_node (Node a1, Node a2 ) {
- //       return null;
- //   }
 
 
 
