@@ -119,7 +119,7 @@ public class LinkedList2
     {
         if(this.head == null)
             return;
-
+        
         if (this.head.next == null && head.value == _value) { //1 el
             this.head = null;
             this.tail = null;
@@ -141,14 +141,12 @@ public class LinkedList2
                 tmp = null;
                 continue;
             }
-
             if (cur_node.value == _value && cur_node == tail) {
                 tail = cur_node.prev;
                 tail.next = null;
                 cur_node = null;
                 break;
             }
-
             if (cur_node.value == _value){
                 cur_node.prev.next = cur_node.next;
                 cur_node.next.prev = cur_node.prev;
@@ -161,7 +159,7 @@ public class LinkedList2
         }
     }
 
-
+    
     public void clear()
     {
         if(this.head == null) {
@@ -259,9 +257,6 @@ public class LinkedList2
         cur_node = cur_node.next;
         }
     }
-
-    public static void main(String[] args) {
-    }
 }
 
 
@@ -279,6 +274,4 @@ class Node
     }
 }
 
-/*
 
- */
