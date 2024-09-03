@@ -52,8 +52,8 @@ public class LinkedList2
     {
         ArrayList<Node> nodes = new ArrayList<Node>();
 
-        if(this.head == null)
-            return null;
+      if(this.head == null)
+            return nodes;
 
         if (this.head.next == null && this.head.value == _value) { //1 el
             nodes.add(this.head);
