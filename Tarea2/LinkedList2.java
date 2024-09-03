@@ -77,7 +77,7 @@ public class LinkedList2
 
     public boolean remove(int _value)
     {
-        if(this.head == null)
+        if (this.head == null)
             return false;
 
         if (this.head.next == null && head.value == _value) { //1 el
@@ -101,7 +101,8 @@ public class LinkedList2
 
         while (cur_node != null) {
             if (cur_node.value == _value) {
-                cur_node.prev.next = cur_node.next.prev;
+                cur_node.prev.next = cur_node.next;
+                cur_node.next.prev = cur_node.prev;
 
                 if (cur_node == tail)
                     tail = cur_node.prev;
@@ -119,7 +120,7 @@ public class LinkedList2
     {
         if(this.head == null)
             return;
-        
+
         if (this.head.next == null && head.value == _value) { //1 el
             this.head = null;
             this.tail = null;
@@ -150,7 +151,8 @@ public class LinkedList2
             if (cur_node.value == _value){
                 cur_node.prev.next = cur_node.next;
                 cur_node.next.prev = cur_node.prev;
-                 tmp = cur_node;
+
+                tmp = cur_node;
                 cur_node = cur_node.next;
                 tmp = null;
                 continue;
@@ -159,7 +161,7 @@ public class LinkedList2
         }
     }
 
-    
+
     public void clear()
     {
         if(this.head == null) {
@@ -207,57 +209,58 @@ public class LinkedList2
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
         if (this.head == null && _nodeAfter == null) {
-        this.head = _nodeToInsert;
-        _nodeToInsert.next = null;
-        tail = _nodeToInsert;
-        return;
-    }
+            this.head = _nodeToInsert;
+            _nodeToInsert.next = null;
+            tail = _nodeToInsert;
+            return;
+        }
         if (_nodeAfter == null) {       // _nodeAfter
-        this.head.prev = _nodeToInsert;
-        _nodeToInsert.next = this.head;
-        this.head = _nodeToInsert;
-        this.head.prev = null;
-        return;
-    }
+            this.head.prev = _nodeToInsert;
+            _nodeToInsert.next = this.head;
+            this.head = _nodeToInsert;
+            this.head.prev = null;
+            return;
+        }
 
         if (this.head == _nodeAfter && this.head.next != null) {  // after head, prev = nullthis.head.next.prev = _nodeToInsert;
-        _nodeToInsert.prev = this.head;
-        _nodeToInsert.next = this.head.next;
-        _nodeToInsert.next.prev =  _nodeToInsert;
-        this.head.next = _nodeToInsert;
-        return;
-    }
+            _nodeToInsert.prev = this.head;
+            _nodeToInsert.next = this.head.next;
+            _nodeToInsert.next.prev =  _nodeToInsert;
+            this.head.next = _nodeToInsert;
+            return;
+        }
         if (this.head == _nodeAfter) {  // after head, prev = null
-        _nodeToInsert.prev = head;
-        this.head.next = _nodeToInsert;
-        _nodeToInsert.next = null;
-        tail = _nodeToInsert;
-        return;
-    }
+            _nodeToInsert.prev = head;
+            this.head.next = _nodeToInsert;
+            _nodeToInsert.next = null;
+            tail = _nodeToInsert;
+            return;
+        }
         if (_nodeAfter == tail){
-        _nodeAfter.next = _nodeToInsert;
-        _nodeToInsert.prev = _nodeAfter;
-        _nodeToInsert.next = null;
-        tail = _nodeToInsert;
-        return;
-    }
+            _nodeAfter.next = _nodeToInsert;
+            _nodeToInsert.prev = _nodeAfter;
+            _nodeToInsert.next = null;
+            tail = _nodeToInsert;
+            return;
+        }
 
         Node cur_node = this.head.next;
 
         while (cur_node != null) {
 
             if(cur_node ==_nodeAfter) {
-            _nodeToInsert.prev = cur_node;
-            _nodeToInsert.next = cur_node.next;
-            cur_node.next.prev = _nodeToInsert;
-            cur_node.next = _nodeToInsert;
+                _nodeToInsert.prev = cur_node;
+                _nodeToInsert.next = cur_node.next;
+                cur_node.next.prev = _nodeToInsert;
+                cur_node.next = _nodeToInsert;
 
-            return;
-        }
-        cur_node = cur_node.next;
+                return;
+            }
+            cur_node = cur_node.next;
         }
     }
 }
+
 
 
 class Node
@@ -273,5 +276,3 @@ class Node
         prev = null;
     }
 }
-
-
