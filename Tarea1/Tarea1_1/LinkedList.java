@@ -1,5 +1,4 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 import java.util.*;
 
 public class LinkedList {
@@ -174,43 +173,19 @@ public class LinkedList {
         Node n2 = L2.head;
         int vav1, val2;
         LinkedList  Ls = new LinkedList();
-      //  Node ns = new Node(0);
-
+     
         for (int i = 0; i < L1.count(); i++ ) {
-            //if (i == 0) {
-             //   Ls.head = ns;
-              //  Ls.tail = ns;
-            //}
-            Node ns = new Node( n1.value + n2.value);
-           // ns.value = n1.value + n2.value;
+           
+            Node ns = new Node( n1.value + n2.value);       
             Ls.addInTail(ns);
-
             n1 = n1.next;
-            n2 = n2.next;
-            //ns = ns.next;
-
+            n2 = n2.next;         
         }
 
         return Ls;
     }
 
-
-
-
-
-
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-    }
-/*
- * 8. Напишите функцию, которая получает на вход два связных списка, состоящие из целых значений,
- *  и если их длины равны, возвращает список, каждый элемент которого равен сумме
- * соответствующих элементов входных списков.
- */
-
+ 
 }
 
 
