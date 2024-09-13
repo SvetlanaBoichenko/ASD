@@ -72,7 +72,7 @@ public void addInTail(Node _item)
 
 
      public boolean remove (int _value) {
-        Node cur_node =  dum1.next;         //;this.head;// bsv
+        Node cur_node =  dum1.next;         //;this.head;
 
         if (this.count() == 1 &&  cur_node.value == _value) {
             this.dum1.next = null;
@@ -182,10 +182,10 @@ public void addInTail(Node _item)
         this.head = dum1.next;
     }
 
-    public static void main(String[] args) {
-
-    }
+   
 }
+
+
 
 class Node
 {
@@ -200,3 +200,6 @@ class Node
         prev = null;
     }
 }
+
+
+
