@@ -1,5 +1,5 @@
-
 import java.util.*;
+
 public class DynArray<T>
 {
     public T [] array;
@@ -112,6 +112,9 @@ public class DynArray<T>
         this.count = this.array.length;
     }
 
-    public static void main(String[] args) {
-    }
-}
+
+    
+} 
+
+
+
