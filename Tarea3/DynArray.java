@@ -1,4 +1,4 @@
-//import java.lang.reflect.Array;
+
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -16,14 +16,11 @@ public class DynArray<T>
         makeArray(16);
     }
 
-    public void makeArray (int new_capacity)// new capacity - занять память
+    public void makeArray (int new_capacity)//
     {
         this.array = (T[]) Array.newInstance(this.clazz, new_capacity);
         this.capacity = new_capacity;
-     //  this.array = myarr;
-        // переписывание массива тут же
     }
-
 
     public T getItem(int index)
     {
@@ -33,7 +30,7 @@ public class DynArray<T>
         return this.array[index];
     }
 
-
+    
     public void append(T itm)
     {
         if (this.capacity < this.count + 1) {
@@ -53,7 +50,7 @@ public class DynArray<T>
     public void insert(T itm, int index)
     {
         if (index > this.count || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Ошибочный индекс");
+            throw new ArrayIndexOutOfBoundsException("Bad index");
         }
 
         if (this.capacity < this.count + 1) {
@@ -76,7 +73,7 @@ public class DynArray<T>
     public void remove(int index)
     {
         if (index >= this.count || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Ошибочный индекс");
+            throw new ArrayIndexOutOfBoundsException("Bad index");
         }
 
         if ( this.count - 1 < 0.5 * this.capacity) {
@@ -102,6 +99,8 @@ public class DynArray<T>
         this.count --;
     }
 
-    public static void main(String[] args) {
-    }
-}
+  
+} 
+
+
+
