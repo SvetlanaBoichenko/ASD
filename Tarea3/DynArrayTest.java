@@ -7,12 +7,6 @@ public class DynArrayTest {
     public void test0() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
         DynArray d2 = new DynArray<Integer>(Integer.class);
-
-     //   Во время выполнения вы можете создать экземпляр Integer,
-     //   экземпляр использует объектно-подобную компоновку памяти, например, с указателем
-     //   в начале, указывающим на Integer.class,
-     //   что обеспечивает полиморфное поведение java во время выполнения.
-
         d2.insert(4,0);
 
         for (int i = 0; i < 16; i++) {
