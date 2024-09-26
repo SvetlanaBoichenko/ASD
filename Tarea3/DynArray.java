@@ -1,4 +1,4 @@
-
+//import java.lang.reflect.Array;
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -20,7 +20,8 @@ public class DynArray<T>
     {
         this.array = (T[]) Array.newInstance(this.clazz, new_capacity);
         this.capacity = new_capacity;
-    
+     //  this.array = myarr;
+        // переписывание массива тут же
     }
 
 
@@ -51,8 +52,8 @@ public class DynArray<T>
 
     public void insert(T itm, int index)
     {
-        if (index >= this.count || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Bad Index");
+        if (index > this.count || index < 0) {
+            throw new ArrayIndexOutOfBoundsException("Ошибочный индекс");
         }
 
         if (this.capacity < this.count + 1) {
@@ -63,8 +64,7 @@ public class DynArray<T>
                 this.array[i] = myarr[i];
             }
         }
-
-        T[] arrtmp = (T[]) Array.newInstance(this.clazz, this.count + 1);
+        T[] arrtmp = (T[]) Array.newInstance(this.clazz, this.capacity);
         System.arraycopy (this.array, 0, arrtmp, 0, index);
         arrtmp [index] =  itm;
         System.arraycopy (this.array, index, arrtmp, index+1, this.count - index);
@@ -76,7 +76,7 @@ public class DynArray<T>
     public void remove(int index)
     {
         if (index >= this.count || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Bad Index");
+            throw new ArrayIndexOutOfBoundsException("Ошибочный индекс");
         }
 
         if ( this.count - 1 < 0.5 * this.capacity) {
@@ -89,22 +89,19 @@ public class DynArray<T>
             }
             makeArray(ncapacity);
 
-            for (int i = 0; i < myarr.length; i++) {
+            for (int i = 0; i < ncapacity; i++) {
                 this.array[i] = myarr[i];
             }
         }
 
-
-        T[] arrtmp = (T[]) Array.newInstance(this.clazz, this.count - 1);
+        T[] arrtmp = (T[]) Array.newInstance(this.clazz, this.capacity);
         System.arraycopy (this.array, 0, arrtmp, 0, index);
         System.arraycopy (this.array, index+1, arrtmp, index, this.count - index-1);
 
         this.array = arrtmp;
-        this.count = this.array.length;
+        this.count --;
     }
 
-  
-} 
-
-
-
+    public static void main(String[] args) {
+    }
+}
