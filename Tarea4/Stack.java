@@ -68,22 +68,7 @@ public class Stack<T> {
         return null; // si esta vacia
     }
 
-    public static void main(String[] args) {
-
-        Node k = new Node(6);
-        Stack st = new Stack();
-        st.push(1);
-        st.push(2);
-        st.push(3);
-
-        Object res = st.peek();
-
-        st.pop();
-        st.pop();
-        st.pop();
-        st.pop();
-
-    }
+ 
 
 }
     class Node<T>
@@ -99,5 +84,6 @@ public class Stack<T> {
             prev = null;
         }
     }
+
 
 
