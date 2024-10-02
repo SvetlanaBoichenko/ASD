@@ -21,11 +21,11 @@ public class Stack<T> {
     }
 
 
-    public T pop() {
-        Node ret = null;
+   public T pop() {
+       T ret = null;
 
         if (this.tail != null) {
-            ret =  this.tail;
+            ret =  (T) this.tail.value;
             this.tail = this.tail.prev;
         } else {
             return (T) ret;
@@ -40,7 +40,6 @@ public class Stack<T> {
 
         return (T) ret;
     }
-
 
     public void push(T val) {
 
