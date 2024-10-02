@@ -21,14 +21,14 @@ public class Stack<T> {
     }
 
 
-   public T pop() {
+ public T pop() {
        T ret = null;
 
         if (this.tail != null) {
             ret =  (T) this.tail.value;
             this.tail = this.tail.prev;
         } else {
-            return (T) ret;
+            return ret;
         }
 
         if (this.tail != null){
@@ -38,8 +38,9 @@ public class Stack<T> {
             this.head = null;
         }
 
-        return (T) ret;
+        return ret;
     }
+
 
     public void push(T val) {
 
