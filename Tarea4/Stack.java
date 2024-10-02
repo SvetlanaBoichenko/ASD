@@ -22,10 +22,10 @@ public class Stack<T> {
 
 
     public T pop() {
-        T ret = null;
+        Node ret = null;
 
         if (this.tail != null) {
-            ret = (T) this.tail.value;
+            ret =  this.tail;
             this.tail = this.tail.prev;
         } else {
             return (T) ret;
@@ -64,7 +64,7 @@ public class Stack<T> {
 
         return null; // si esta vacia
     }
- 
+  
 
 }
 
