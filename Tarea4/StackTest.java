@@ -22,13 +22,13 @@ public class StackTest {
        Integer y = (Integer)st.peek();
         assertTrue(y == 3);
 
-        st.pop();
+       Node a = (Node) st.pop();
         s = st.size();
         assertTrue(s == 2);
         y = (Integer)st.peek();
         assertTrue(y == 2);
 
-        y= (Integer) st.pop();
+        a = (Node) st.pop();
         assertTrue( y == 2);
         s = st.size();
         assertTrue(s == 1);
@@ -36,17 +36,17 @@ public class StackTest {
         assertTrue( y == 1);
 
 
-        y = (Integer)st.pop();
+        a = (Node)st.pop();
         assertTrue(y == 1);
         s = st.size();
         assertTrue(s == 0);
         y = (Integer)st.peek();
 
-        y =  (Integer) st.pop();
+        a =  (Node) st.pop();
         assertTrue(y == null);
         y = (Integer)st.peek();
 
-        y =  (Integer) st.pop();
+        a =  (Node) st.pop();
         assertTrue(y == null);
         s = st.size();
         assertTrue(s == 0);
