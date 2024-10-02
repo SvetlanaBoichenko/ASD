@@ -1,4 +1,3 @@
-
 public class Stack<T> {
     public Node head;
     public Node tail;
@@ -23,9 +22,10 @@ public class Stack<T> {
 
 
     public T pop() {
-        Node ret = this.tail;
+        T ret = null;
 
-        if (ret != null) {
+        if (this.tail != null) {
+            ret = (T) this.tail.value;
             this.tail = this.tail.prev;
         } else {
             return (T) ret;
@@ -60,14 +60,13 @@ public class Stack<T> {
 
     public T peek() {
         if (this.tail != null)
-            return (T)this.tail;
+            return (T)this.tail.value;
 
         return null; // si esta vacia
     }
+ 
 
-    
 }
-
 
 
 class Node<T>
