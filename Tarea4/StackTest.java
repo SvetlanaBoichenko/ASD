@@ -19,16 +19,26 @@ public class StackTest {
         s = st.size();
         assertTrue(s == 3);
 
-        Integer y = (Integer)st.peek();
-        assertTrue(y == 3);
+        Node y = (Node)st.peek();
+        assertTrue((Integer)y.value == 3);
 
         st.pop();
         s = st.size();
         assertTrue(s == 2);
 
-        st.pop();
-        st.pop();
-        st.pop();
+
+        y= (Node) st.pop();
+        assertTrue( (Integer)y.value == 2);
+        Node r1 =  (Node) st.pop();
+        assertTrue((Integer)r1.value == 1);
+        r1 =  (Node) st.pop();
+        assertTrue(r1 == null);
+
+        y =  (Node) st.pop();
+        assertTrue(y == null);
+
+
+
 
         s = st.size();
         assertTrue(s == 0);
