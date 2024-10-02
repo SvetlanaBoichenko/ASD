@@ -23,7 +23,7 @@ public class Stack<T> {
 
 
     public T pop() {
-        Object ret = this.tail;
+        Node ret = this.tail;
 
         if (ret != null) {
             this.tail = this.tail.prev;
@@ -36,12 +36,9 @@ public class Stack<T> {
         }
         else {
             this.head = null;
-            ret = null;
         }
 
         return (T) ret;
-
-      //  return null;  // si esta vacia
     }
 
 
@@ -63,27 +60,29 @@ public class Stack<T> {
 
     public T peek() {
         if (this.tail != null)
-            return (T)(this.tail.value);
+            return (T)this.tail;
 
         return null; // si esta vacia
     }
 
- 
-
+    
 }
-    class Node<T>
-    {
-        public T value;
-        public Node next;
-        public Node prev;
 
-        public Node(T _value)
-        {
-            value = _value;
-            next = null;
-            prev = null;
-        }
+
+
+class Node<T>
+{
+    public T value;
+    public Node next;
+    public Node prev;
+
+    public Node(T _value)
+    {
+        value = _value;
+        next = null;
+        prev = null;
     }
+}
 
 
 
