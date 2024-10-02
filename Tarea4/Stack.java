@@ -21,21 +21,20 @@ public class Stack<T> {
     }
 
 
- public T pop() {
-       T ret = null;
+   public T pop() {
+        T ret = null;
 
-        if (this.tail != null) {
-            ret =  (T) this.tail.value;
-            this.tail = this.tail.prev;
-        } else {
-            return ret;
+        if (this.tail == null) {
+            return null;
         }
 
-        if (this.tail != null){
-            this.tail.next = null;
-        }
-        else {
+        ret = (T) this.tail;  //.value;
+        this.tail = this.tail.prev;
+
+        if (this.tail == null) {
             this.head = null;
+        } else {
+            this.tail.next = null;
         }
 
         return ret;
