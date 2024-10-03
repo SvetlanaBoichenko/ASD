@@ -1,74 +1,63 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
-
-//import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class StackTest {
     @Test
     public void test0() {
-        Stack<Integer> st = new Stack<Integer>();
-        st.push(1);
+        Stack<Integer> st = new  Stack<>();
+        int s = 0;
+        int N = 10;
 
-        int s = st.size();
-        assertTrue(s == 1);
+        Integer pik = 0;
+        for (int i = 0; i < N; i ++) {
+            st.push(i);
+            s = st.size();
+            assertEquals(s, i + 1);
+            pik = st.peek();
+            assertEquals(pik.intValue(), i);
+        }
+
+        Integer p = 0;
+        for (int i = N-1; i >= 0; i --) {
+            p = st.pop();
+            assertEquals(p.intValue(), i);
+            s = st.size();
+            assertEquals(s, i);
+
+            if (i > 0) {
+                pik = st.peek();
+                assertEquals(pik.intValue(), i - 1);
+            }
+            else {
+                pik = st.peek();
+                assertNull(pik);
+            }
+        }
+
+         s = st.size();
+        assertEquals(0, s);
 
         st.push(2);
-        s = st.size();
         st.push(3);
-        s = st.size();
-        assertTrue(s == 3);
+        st.push(4);
+        st.push(5);
+        st.push(6);
 
-       Integer y = st.peek();
-        assertTrue(y == 3);
+        for (int i = 6; i >= 4; i --) {
+            p = st.pop();
+            assertEquals(p.intValue(), i);
+        }
 
-     //  Node a = (Node) st.pop();
-        y =  st.pop();
-        assertTrue(y == 3);
-        s = st.size();
-        assertTrue(s == 2);
-        y = st.peek();
-        assertTrue(y == 2);
-
-        y =  st.pop();
-        assertTrue( y == 2);
-        s = st.size();
-        assertTrue(s == 1);
-        y = st.peek();
-        assertTrue( y == 1);
-
-
-        y =  st.pop();
-        assertTrue(y == 1);
-        s = st.size();
-        assertTrue(s == 0);
-        y = st.peek();
-        assertTrue(y == null);
-
-        y =  st.pop();
-        assertTrue(y == null);
-        y = st.peek();
-        assertTrue(y == null);
-
-        s = st.size();
-        assertTrue(s == 0);
-
-        st.push(3);
-       y= st.pop();
-
-
-        Stack<String> st1 = new Stack<String>();
-        st1.push("1");
-
-        assertTrue(y == null);
-        st1.push("2");
-        st1.push("3");
-        st1.push("4");
-
-        String h1 =  st1.pop();
-        h1 =  st1.pop();
-        h1 =  st1.pop();
-
+        st.push (7);
+        p = st.pop();
+        assertEquals(7, (int) p);
+        p = st.pop();
+        assertEquals(3, (int) p);
+        p = st.pop();
+        assertEquals(2, (int) p);
+        p = st.pop();
+        assertNull(p);
 
     }
 }
