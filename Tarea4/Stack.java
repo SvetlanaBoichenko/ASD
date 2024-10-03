@@ -1,16 +1,17 @@
 public class Stack<T> {
-    public Node<T> head;
-    public Node<T> tail;
+    public Node <T> head;
+    public Node <T>tail;
 
     public Stack() {
         head = null;
         tail = null;
+        // init internal storage of stack
     }
 
     public int size() {
         int n = 0;
 
-        Node cur_node = this.head;
+        Node<T> cur_node = this.head;
 
         while (cur_node != null) {
             n++;
@@ -21,13 +22,12 @@ public class Stack<T> {
 
 
     public T pop() {
-        T ret = null;
 
         if (this.tail == null) {
             return null;
         }
 
-        ret =  this.tail.value; //(T)
+        T ret =  this.tail.value; //(T)
 
         this.tail = this.tail.prev;
 
@@ -38,10 +38,13 @@ public class Stack<T> {
         }
 
         return ret;
+      //  return null;
     }
 
+
     public void push(T val) {
-        Node<T> new_n = new Node<T>(val);
+
+        Node<T> new_n = new Node<>(val);
 
         if (head == null) {
             this.head = new_n;
@@ -54,27 +57,28 @@ public class Stack<T> {
         this.tail = new_n;
     }
 
+
     public T peek() {
         if (this.tail != null)
-            return (T)this.tail.value;
+            return this.tail.value;
 
         return null; // si esta vacia
     }
+
 }
-
-
-class Node<T>
-{
-    public T value;
-    public Node next;
-    public Node prev;
-
-    public Node(T _value)
+    class Node<T>
     {
-        value = _value;
-        next = null;
-        prev = null;
+        public T value;
+        public Node<T> next;
+        public Node<T> prev;
+
+        public Node(T _value)
+        {
+            value = _value;
+            next = null;
+            prev = null;
+        }
     }
-}
+
 
 
