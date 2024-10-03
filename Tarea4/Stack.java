@@ -60,15 +60,8 @@ public class Stack<T> {
 
         return null; // si esta vacia
     }
-    public static void main (String[] args) {
-         Stack<Integer> st = new Stack<Integer>();
-         Integer i = 9;
-         st.push(i);
-         Integer y = st.pop();
-         String s = "mama";
-
-    }
 }
+
 
 class Node<T>
 {
