@@ -1,11 +1,10 @@
 public class Stack<T> {
-    public Node head;
-    public Node tail;
+    public Node<T> head;
+    public Node<T> tail;
 
     public Stack() {
         head = null;
         tail = null;
-        // init internal storage of stack
     }
 
     public int size() {
@@ -21,14 +20,15 @@ public class Stack<T> {
     }
 
 
-   public T pop() {
+    public T pop() {
         T ret = null;
 
         if (this.tail == null) {
             return null;
         }
 
-        ret = (T) this.tail;  //.value;
+        ret =  this.tail.value; //(T)
+
         this.tail = this.tail.prev;
 
         if (this.tail == null) {
@@ -40,10 +40,8 @@ public class Stack<T> {
         return ret;
     }
 
-
     public void push(T val) {
-
-        Node new_n = new Node (val);
+        Node<T> new_n = new Node<T>(val);
 
         if (head == null) {
             this.head = new_n;
@@ -56,17 +54,21 @@ public class Stack<T> {
         this.tail = new_n;
     }
 
-
     public T peek() {
         if (this.tail != null)
             return (T)this.tail.value;
 
         return null; // si esta vacia
     }
-  
+    public static void main (String[] args) {
+         Stack<Integer> st = new Stack<Integer>();
+         Integer i = 9;
+         st.push(i);
+         Integer y = st.pop();
+         String s = "mama";
 
+    }
 }
-
 
 class Node<T>
 {
@@ -81,6 +83,5 @@ class Node<T>
         prev = null;
     }
 }
-
 
 
