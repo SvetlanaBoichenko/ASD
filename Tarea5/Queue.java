@@ -54,11 +54,9 @@ public class Queue<T>
         return n;
     }
 
-
-    public static void main (String[] args) {
-
-    }
+    
 }
+
 
 
 class Node<T>
@@ -74,3 +72,5 @@ class Node<T>
         prev = null;
     }
 }
+
+
