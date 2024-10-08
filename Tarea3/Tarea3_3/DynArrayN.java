@@ -106,8 +106,6 @@ public class DynArrayN<T> {
     }
 
 
-    public static void main(String[] args) {
-        int[] sizes = {1, 2, 3};
-        DynArrayN darr = new DynArrayN(Integer.class, 3, sizes);
-    }
 }
+
+
