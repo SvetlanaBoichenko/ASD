@@ -6,12 +6,11 @@ public class Queue<T>
     public  Queue() {
         head = null;
         tail = null;
-        // init internal storage of stack
     }
 
 
     public void enqueue(T item)
-    {   // вставка в хвост
+    {   
         Node<T> new_n = new Node<>(item);
 
         if (this.head == null) {
