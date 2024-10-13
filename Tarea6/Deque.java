@@ -17,7 +17,6 @@ public class Deque<T>
         new_n.next = this.head;
         this.head = new_n;
         this.head.prev = null;
-
     }
 
     public void addTail(T item)
@@ -84,10 +83,8 @@ public class Deque<T>
     }
 
 
-    public static void main(String[] args) {
-
-    }
 }
+
 
 class Node <T>
 {
@@ -102,3 +99,5 @@ class Node <T>
         prev = null;
     }
 }
+
+
