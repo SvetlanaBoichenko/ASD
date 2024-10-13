@@ -1,5 +1,4 @@
 
-
 public class Stack<T> {
     public Node<T> head;
     public Node<T> tail;
@@ -8,8 +7,6 @@ public class Stack<T> {
         boolean isaval1 = false;
         head = null;
         tail = null;
-
-
     }
 
     public int size() {
@@ -39,7 +36,6 @@ public class Stack<T> {
         return ret;
     }
 
-
     public void push(T val) {
         Node<T> new_n = new Node<>(val);
 
@@ -53,7 +49,6 @@ public class Stack<T> {
         }
         this.tail = new_n;
     }
-
 
     public T peek() {
         if (this.tail != null)
@@ -123,8 +118,6 @@ public class Stack<T> {
         return true;
     }
 
-    public static void main(String[] args) {
-    }
 }
 
 class Node<T> {
@@ -139,6 +132,7 @@ class Node<T> {
     }
 
 }
+
 
 //----------------------------------------------------------------------
 class stackcomm
@@ -209,6 +203,7 @@ class stackcomm
     }
 }
 
+
 //-----------------------------------------------------------------
 class stackpostfix {
 
@@ -219,7 +214,7 @@ class stackpostfix {
         stacknum = new Stack<Integer>();
         stackdata = new Stack<String>();
     }
-    // 8 2 + 5 * 9 + =
+
     public Integer result(Stack stackdata) {
         boolean isnum;
         Integer n1, n2, res = 0, retres = 0;
