@@ -9,9 +9,16 @@ public class Deque<T>
         tail = null;
     }
 
-    public void addFront(T item)
+     public void addFront(T item)
     {
         Node<T> new_n = new Node<>(item);
+        if (this.head == null){
+            this.head = new_n;
+            this.head.next = null;
+            this.head.prev = null;
+            this.tail = new_n;
+            return;
+        }
 
         this.head.prev = new_n;
         new_n.next = this.head;
