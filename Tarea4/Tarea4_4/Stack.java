@@ -83,33 +83,28 @@ public class Stack<T> {
     }
 
 //-----------------------------------------------------------------
-
     public boolean sbalansd (String str) {
+     HashMap<Character, Character> sk = new HashMap<>();
+        sk.put('(', ')');
+        sk.put('[', ']');
+        sk.put('{', '}');
+        sk.put('<', '>');
+
         char[] charr = str.toCharArray();
-        char strchar, lastchar = ' ';
-
+        Character ch;
         for (int i = 0; i < str.length(); i++) {
-            strchar = charr[i];
-
-            if (strchar == '(' | strchar == '{' | strchar == '[') {
-                this.push((T) (String.valueOf(strchar)));
-            } else {
-                String p = (String) pop();
-                if (p == null)
-                    return false;
-
-                char chpop = p.charAt(0);
-                if (chpop == '(' & strchar != ')')
-                    return false;
-                if (chpop == '{' & strchar != '}')
-                    return false;
-                if (chpop == '[' & strchar != ']')
+            ch = (Character)charr[i];
+            if (sk.containsKey(ch)) {
+                this.push((T) ch);
+            }
+            else {
+                Character p1 = (Character) this.pop();
+                if ( p1 == null | ch != sk.get(p1))
                     return false;
             }
         }
         return true;
     }
-
 }
 
 class Node<T> {
