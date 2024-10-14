@@ -58,29 +58,21 @@ public class Stack<T> {
 
 //----------------------------------------------------------
     public boolean sbalans (String str) {
-        char[] charr = str.toCharArray();
+          char[] charr = str.toCharArray();
         if (charr[0] == ')')
-            return false;
-
-        int c1 = 0, c2 = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (charr[i] == '(')
-                c1++;
-            if (charr[i] == ')')
-                c2++;
-        }
-        if (c1 != c2)
             return false;
 
         for (int i = 0; i < str.length(); i++) {
             char tmp = charr[i];
 
             if (tmp == '(') {
-                String psh = "" + tmp;
+                Character psh = tmp;
                 this.push((T) psh);
             }
             if (tmp == ')') {
-                pop();
+                Character p = (Character) this.pop();
+                if (p == null)
+                        return false;
             }
         }
 
