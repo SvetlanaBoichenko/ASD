@@ -135,6 +135,31 @@ class stackcomm
         stackav  = new Stack<Double> ();
     }
 
+    public void pushav (Integer val)
+    {
+        Double av = 0.0;
+        Double oldsum = (Double)this.stackav.peek();
+
+        if (oldsum == null) {
+            this.stackav.push (val * 1.0);
+            this.stackmain.push (val);
+            return;
+        }
+
+        av = (oldsum * this.stackav.size() + val) / (this.stackav.size() + 1);
+        this.stackav.push (av);
+        this.stackmain.push (val);
+    }
+
+    public Integer popav () {
+        this.stackav.pop();
+        return this.stackmain.pop();
+    }
+
+    public Double averofstack() {
+        return this.stackav.peek();
+    
+    
     public void pushm (Integer val)
     {
         Integer oldval =  (Integer)this.stackmin.peek();
@@ -162,29 +187,7 @@ class stackcomm
         return this.stackmin.peek();
     }
 
-    public void pushav (Integer val)
-    {
-        Double av = 0.0;
-        Double oldsum = (Double)this.stackav.peek();
 
-        if (oldsum == null) {
-            this.stackav.push (val * 1.0);
-            this.stackmain.push (val);
-            return;
-        }
-
-        av = (oldsum * this.stackav.size() + val) / (this.stackav.size() + 1);
-        this.stackav.push (av);
-        this.stackmain.push (val);
-    }
-
-    public Integer popav () {
-        this.stackav.pop();
-        return this.stackmain.pop();
-    }
-
-    public Double averofstack() {
-        return this.stackav.peek();
     }
 }
 
