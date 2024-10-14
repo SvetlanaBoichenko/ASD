@@ -136,13 +136,12 @@ class stackcomm
 
     public void pushm (Integer val)
     {
-       Integer oldval =  (Integer)this.stackmin.peek();
-
-       if (oldval == null) {
-           stackmin.push(val);
-           stackmain.push(val);
-           return;
-       }
+        Integer oldval =  (Integer)this.stackmin.peek();
+        if (oldval == null) {
+            stackmin.push(val);
+            stackmain.push(val);
+            return;
+        }
 
         if (oldval < val)
             this.stackmin.push(oldval);
@@ -154,7 +153,7 @@ class stackcomm
 
     public Integer popm(Integer val)
     {
-       this.stackmin.pop();
+        this.stackmin.pop();
         return this.stackmain.pop();
     }
 
@@ -165,31 +164,28 @@ class stackcomm
     public void pushav (Integer val)
     {
         Double av = 0.0;
-        Double oldval = (Double)this.stackav.peek();
+        Double oldsum = (Double)this.stackav.peek();
 
-        if (oldval == null) {
+        if (oldsum == null) {
             this.stackav.push (val * 1.0);
             this.stackmain.push (val);
             return;
         }
 
-        av = (oldval * this.stackav.size() + val) / (this.stackav.size() + 1);
+        av = (oldsum * this.stackav.size() + val) / (this.stackav.size() + 1);
         this.stackav.push (av);
         this.stackmain.push (val);
     }
 
-    public Integer popav (Integer val)
-    {
+    public Integer popav () {
         this.stackav.pop();
         return this.stackmain.pop();
-
     }
 
     public Double averofstack() {
         return this.stackav.peek();
     }
 }
-
 
 //-----------------------------------------------------------------
 class stackpostfix {
