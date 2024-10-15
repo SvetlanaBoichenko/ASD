@@ -127,39 +127,31 @@ class stackcomm
 {
     Stack<Integer> stackmain;
     Stack<Integer> stackmin;
-    Stack<Double> stackav;
+    Double Sumav;
 
     stackcomm() {
         stackmain = new Stack<Integer> ();
         stackmin  = new Stack<Integer> ();
-        stackav  = new Stack<Double> ();
+        Sumav  = 0.0;
     }
 
     public void pushav (Integer val)
     {
         Double av = 0.0;
-        Double oldsum = (Double)this.stackav.peek();
-
-        if (oldsum == null) {
-            this.stackav.push (val * 1.0);
-            this.stackmain.push (val);
-            return;
-        }
-
-        av = (oldsum * this.stackav.size() + val) / (this.stackav.size() + 1);
-        this.stackav.push (av);
+        Sumav = (Sumav * this.stackmain.size() + val) / (this.stackmain.size() + 1);
         this.stackmain.push (val);
     }
 
-    public Integer popav () {
-        this.stackav.pop();
+    public Integer popav ()
+    {
+        Sumav = (Sumav * this.stackmain.size() - this.stackmain.peek()) / (this.stackmain.size()-1);
         return this.stackmain.pop();
     }
 
     public Double averofstack() {
-        return this.stackav.peek();
-    
-    
+        return this.Sumav;
+    }
+
     public void pushm (Integer val)
     {
         Integer oldval =  (Integer)this.stackmin.peek();
@@ -168,7 +160,6 @@ class stackcomm
             stackmain.push(val);
             return;
         }
-
         if (oldval < val)
             this.stackmin.push(oldval);
         else
@@ -188,8 +179,8 @@ class stackcomm
     }
 
 
-    }
 }
+
 
 //-----------------------------------------------------------------
 class stackpostfix {
