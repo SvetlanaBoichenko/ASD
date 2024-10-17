@@ -28,14 +28,10 @@ public class OrderedList<T>
     public int compare(T v1, T v2)
     {
         return ((Integer) v1).compareTo((Integer) v2);
-
-        //  if ((Integer)v1 < (Integer)v1)    // -1 if v1 < v2
-      //      return -1;
-      //  if ((Integer)v1 > (Integer)v1)  // +1 if v1 > v2
-      //      return 1;
-        // 0 if v1 == v2
+       // -1 if v1 < v2
+       // +1 if v1 > v2
+       // 0 if v1 == v2
     }
-
 
     public void add(T value)
     {
@@ -96,7 +92,7 @@ public class OrderedList<T>
 
             curnod = curnod.next;
         }
-        return null; //
+        return null; 
     }
 
     public void delete(T val)
@@ -158,7 +154,9 @@ public class OrderedList<T>
         return r;
     }
 
-    public static void main(String[] args) {
 
-    }
+    
 }
+
+
+
