@@ -30,12 +30,6 @@ public class SQueue<T> {
     }
 
 
-
-    public static void main(String[] args) {
-    }
-
-}
-
 //-----------------------------------------------------------
 class Node<T>
 {
@@ -114,3 +108,5 @@ class Node<T>
 
 
 }
+
+
