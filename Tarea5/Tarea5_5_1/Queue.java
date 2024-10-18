@@ -51,8 +51,7 @@ public class Queue<T>
         return n;
     }
 
-    //-----------------------------------------------------------
-    //N - rotate
+    //------------------------------------------
 
     public Node<T> dequeue_n() {     // pop node de head
 
@@ -85,8 +84,7 @@ public class Queue<T>
         this.tail = new_n;
     }
 
-    //--------------------------------------------
-
+  
     public void rotate (int nrot) {     // las vueltas
         for (int i = 0; i < nrot; i++) {
             Node<T> fnode = (Node<T>) this.dequeue_n();
@@ -94,7 +92,7 @@ public class Queue<T>
         }
     }
 
-
+//--------------------------------
     public Queue<T>  rotateall () {
         int n = this.size();
         Queue newque = new Queue();
@@ -108,9 +106,6 @@ public class Queue<T>
         return newque;
     }
 
-
-    public static void main(String[] args) {  }
-}
 
 class Node<T>
 {
@@ -126,69 +121,3 @@ class Node<T>
     }
 }
 
-
-//--------------rotate all-------------------------------------
-/*
-public void addtail (Node<T> node) {  //add before the head
-    if (this.head == null) {
-        this.head = node;
-        this.head.next = null;
-        this.head.prev = null;
-    } else {
-        this.tail.next = node;
-        node.prev = tail;
-    }
-    this.tail = node;
-    this.tail.next = null;
-}
-
-public void addafter_head (Node<T> node) {  //add before the head
-    if (this.head == null) {
-        return;
-    }
-    node.prev = this.head;
-    node.next = this.head.next;
-    this.head.next.prev = node;
-    this.head.next = node;
-}
-
-public void add_head (Node<T> node) {  //add before the head
-    if (this.head == null) {
-        return;
-    }
-    node.prev = null;
-    node.next = this.head;
-    this.head.prev = node;
-    this.head = node;
-}
-
-public Node<T> rethead () {   //return the tail
-    if (this.head == null) {
-        return null;
-    }
-    Node<T> ret =  this.head; //(T)
-
-    this.head = this.head.next;
-    if (this.head == null) {
-        this.tail = null;
-    } else {
-        this.head.prev = null;
-    }
-    return ret;
-}
-
-public Node<T> rettail () {   //return the tail
-    if (this.tail == null) {
-        return null;
-    }
-    Node<T> ret =  this.tail; //(T)
-
-    this.tail = this.tail.prev;
-    if (this.tail == null) {
-        this.head = null;
-    } else {
-        this.tail.next = null;
-    }
-    return ret;
-}
-*/
