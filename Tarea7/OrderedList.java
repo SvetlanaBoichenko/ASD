@@ -27,9 +27,25 @@ public class OrderedList<T>
 
     public int compare(T v1, T v2)
     {
-        return ((Integer) v1).compareTo((Integer) v2);
+        int ret = 0;
+        Class<?> cls = v1.getClass();
+        if(cls.getName().equals("java.lang.Integer")) {
+            ret = ((Integer) v1).compareTo((Integer) v2);
+        }
+        if ((cls.getName().equals("java.lang.String"))){
+            ret = ((String) v1).compareTo((String) v2);
+        }
+
+       if (ret > 0)
+           return 1;
+       if (ret < 0)
+           return -1;
+
+       return 0;
     }
 
+
+    
     public void add(T value)
     {
         Node<T> newnod = new Node<>(value);
