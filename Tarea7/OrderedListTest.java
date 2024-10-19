@@ -125,7 +125,7 @@ public class OrderedListTest {
 
         odl2.delete(1);
     }
-    //Исключение при удалении последнего элемента в списке
+    //
     @Test
     public void test_delete() {
         OrderedList<Integer> odl3 = new OrderedList<Integer>(true);
