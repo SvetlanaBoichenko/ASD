@@ -1,4 +1,4 @@
-import java.util.Objects;
+import java.util.*;
 
 public class HashTable
 {
@@ -65,7 +65,7 @@ public class HashTable
         return ind;
     }
 
-    public static void main(String[] args) {
+   
+} 
 
-    }
-}
+
