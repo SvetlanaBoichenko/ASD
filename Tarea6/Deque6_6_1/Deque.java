@@ -91,6 +91,7 @@ public class Deque<T>
         return n;
     }
 
+    
 //----------SbalansS--------------------
     public boolean sbalansS (String str) {
         HashMap<Character, Character> sk = new HashMap<>();
@@ -136,11 +137,9 @@ public class Deque<T>
         return true;
     }
 
-
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
-    }
+    
 }
+
 
 //------------------------------------------------------
 class  Dequemin extends Deque<Integer> {
@@ -216,8 +215,6 @@ class  Dequemin extends Deque<Integer> {
 }
 
 
-
-
 class Node <T>
 {
     public T value;
@@ -231,3 +228,5 @@ class Node <T>
         prev = null;
     }
 }
+
+
