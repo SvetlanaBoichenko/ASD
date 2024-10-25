@@ -149,18 +149,7 @@ class  Dequemin extends Deque<Integer> {
         deqmin = new Deque<>();
     }
 
-    public Integer peekhead() {
-        if (this.head != null)
-            return this.head.value;
-        return null; // si esta vacia
-    }
-
-    public Integer peektail() {
-        if (this.tail != null)
-            return this.tail.value;
-        return null; // si esta vacia
-    }
-
+ 
     public void addFrontm(Integer item) {
         this.addFront(item);
         Integer oldmin;
