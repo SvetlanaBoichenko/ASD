@@ -119,7 +119,8 @@ public class DeqDynArray<T>
         this.count --;
     }
 
-    public static void main (String[] args) { }
+    
 
 }
+
 
