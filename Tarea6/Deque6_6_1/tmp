@@ -1,1 +1,11 @@
+   public Integer peekhead() {
+        if (this.head != null)
+            return this.head.value;
+        return null; // si esta vacia
+    }
 
+    public Integer peektail() {
+        if (this.tail != null)
+            return this.tail.value;
+        return null; // si esta vacia
+    }
