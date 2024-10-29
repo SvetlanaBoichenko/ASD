@@ -156,7 +156,7 @@ public class OrderedList<T>
         return n;
     }
 
-//--------------------------------------
+//----------------------------------------------------------
     public void DelDublicate (){
         Node<T> curnod = this.head;
         Node<T> nextnod = this.head.next;
@@ -177,7 +177,7 @@ public class OrderedList<T>
         }
     }
 
-    //--------------------------------------
+    //--------------------------------------------------------
     public T SumDublicate (){
         Node<T> curnod = this.head;
         Node<T> nextnod = this.head.next;
@@ -257,7 +257,7 @@ public class OrderedList<T>
         list.tail = newnod;
         return true;
     }
-//-----------------------------------------------------------------------------------
+//--------------
     public OrderedList Orderlists (OrderedList<Integer> list1,OrderedList<Integer> list2 ) {
         Node<Integer> L1 = list1.head;
         Node<Integer> L2 = list2.head;
@@ -311,54 +311,6 @@ public class OrderedList<T>
         }
         return r;
     }
-
-    public static void main(String[] args) {
-
-    }
 }
 
-/*   public OrderedList Orderlists (OrderedList<Integer> list1,OrderedList<Integer> list2 ) {
-      //  int ascendval = -1;
-      //  if (this._ascending) {
-      //      ascendval = 1;
-      //  }
 
-        Node<Integer> L1 = list1.head;
-        Node<Integer> L2 = list2.head;
-        OrderedList<Integer> retlist = null;
-
-        while (L1 != null || L2 != null) {
-            if (L1.value < L2.value) {
-                retlist = list1;
-                break;
-            }
-            if (list1.head.value > list2.head.value) {
-                L2 = list1.head;
-                L1 = list2.head;
-                retlist = list2;
-                break;
-            }
-            L1 = L1.next;
-            L2 = L2.next;
-        }
-
-        while (L1 != null && L2 != null) {
-            if (L2.value <= L1.value) {  // список 1 больше 2
-                Node<Integer> newnod = new Node<> (L2.value);
-                Insert(L1, newnod);
-                L2 = L2.next;
-                continue;
-            }
-            L1 = L1.next;
-        }
-
-        while (L2 != null) {
-            Node<Integer> nod = new Node<>(L2.value);
-           boolean b =  addInTail(retlist,nod);
-           if (b == false)
-               break;
-           L2 = L2.next;
-        }
-
-        return retlist;
-    }*/
