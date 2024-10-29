@@ -90,8 +90,7 @@ public class OrderedListArr<T>
         this.count = this.count+1;
     }
 
-
-
+//--------------------------------------------------------
     public int find(T val)
     {
         int newpos;
@@ -99,7 +98,6 @@ public class OrderedListArr<T>
         int lpos = 0, rpos = this.count-1;;
 
         while (lpos <= rpos) {
-
             newpos = (lpos+ rpos) / 2;
 
             if (this.compare(val, this.array[newpos]) == 0)
@@ -155,8 +153,7 @@ public class OrderedListArr<T>
             this.array[i] = null;
         }
        this.count = 0;
-        makeArray(16);
-
+       makeArray(16);
         _ascending = asc;
     }
 
@@ -172,7 +169,6 @@ public class OrderedListArr<T>
     }
 
 
-public static void main(String[] args) {
-        System.out.println("Hello world!");
-    }
 }
+
+
