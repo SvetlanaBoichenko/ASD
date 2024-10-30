@@ -16,7 +16,7 @@ class NativeDictionary<T>
 
     public int hashFun(String key)
     { // return real index of slot
-        if (key.equals(""))
+        if (key.isEmpty())
             return 0;
 
         int ind = 0;
@@ -28,19 +28,16 @@ class NativeDictionary<T>
     }
 
     public boolean isKey(String key)
-    {// return true if thereis the key int the Dict
-       int ind = this.hashFun(key);// int value of the String key-element of Slots
-        int i = ind;
-
-        while (this.slots[i] != null && this.slots[i] != key) {
-            i = (i + 1) % this.size;
-            if (i == ind)
-                return false;
-        }
-            if (Objects.equals(slots[ind], key))
-            return true;
-
+    {                               // return true if thereis the key int the Dict
+        int ind = this.hashFun(key);// int value of the String key-element of Slots
+        if (ind > size || ind < 0)
             return false;
+
+        for (int i = 0; i < this.size; i++){
+            if (i == ind && slots[i] == key)
+                return true;
+        }
+        return false;
     }
 
     public void put(String key, T value)
