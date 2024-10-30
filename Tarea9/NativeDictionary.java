@@ -16,7 +16,7 @@ class NativeDictionary<T>
 
     public int hashFun(String key)
     { // return real index of slot
-        if (key.isEmpty())
+        if (key.equals(""))
             return 0;
 
         int ind = 0;
@@ -27,35 +27,45 @@ class NativeDictionary<T>
         return ind;
     }
 
-    public boolean isKey(String key)
-    {                               // return true if thereis the key int the Dict
-        int ind = this.hashFun(key);// int value of the String key-element of Slots
-        if (ind > size || ind < 0)
-            return false;
-
-        for (int i = 0; i < this.size; i++){
-            if (i == ind && slots[i] == key)
-                return true;
+    public int rindex (String key){   //real index for same hash & dif key
+       int first_index = this.hashFun(key);
+       int i = first_index;
+        while (this.slots[i] != null && this.slots[i] != key) {
+            i = (i + 1) % this.size;
+            if (i == first_index) // stop cicle
+                return -1;
         }
-        return false;
+        return i;
+    }
+
+
+    public boolean isKey(String key)
+    {                                // return true if thereis the key int the Dict
+        int ind = this.rindex(key);  // int value of the String key-element of Slots
+
+        if (ind >= 0 && Objects.equals(slots[ind], key)) {
+            return true;
+        }
+            return false;
     }
 
     public void put(String key, T value)
     {  // Add value to key
-        int index = this.hashFun(key);
+        int index = this.rindex(key);
         this.slots[index] = key;
         this.values[index] =  value;
     }
 
     public T get(String key)
     {// return value for key or null
-        int index = this.hashFun(key);
-
-        return  (this.values[index]);
-        //return null;
+        int index = this.rindex(key);
+        if (index >= 0) {
+            return (this.values[index]);
+        }
+        return null;
     }
 
-
+    
 } 
 
 
