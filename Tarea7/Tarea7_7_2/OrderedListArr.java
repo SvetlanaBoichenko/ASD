@@ -1,4 +1,3 @@
-
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -15,7 +14,7 @@ class Node<T>
     }
 }
 
-public class OrderedListArr<T>
+public class OrderedListArr<T extends Comparable>
 {
     public T [] array;
     public int count;
@@ -31,11 +30,11 @@ public class OrderedListArr<T>
         _ascending = asc;
     }
 
-     public void makeArray (int new_capacity)//
-     {
+    public void makeArray (int new_capacity)//
+    {
         this.array = (T[]) Array.newInstance(this.clazz, new_capacity);
         this.capacity = new_capacity;
-     }
+    }
 
     public int compare(T v1, T v2)
     {
@@ -68,7 +67,8 @@ public class OrderedListArr<T>
         }
         int index;
         for (index = 0; index < this.count; index++) {
-            if (this.array[index] != null && (this.compare(value, this.array[index])) != ascendval) {
+          //  if (this.array[index] != null && (this.compare(value, this.array[index])) != ascendval)
+            if (this.array[index] != null && value.compareTo( this.array[index]) != ascendval) {
                 break;
             }
         }
@@ -90,7 +90,7 @@ public class OrderedListArr<T>
         this.count = this.count+1;
     }
 
-//--------------------------------------------------------
+    //--------------------------------------------------------
     public int find(T val)
     {
         int newpos;
@@ -100,26 +100,27 @@ public class OrderedListArr<T>
         while (lpos <= rpos) {
             newpos = (lpos+ rpos) / 2;
 
-            if (this.compare(val, this.array[newpos]) == 0)
+            if (val.compareTo( this.array[newpos]) == 0)
+           // if (this.compare(val, this.array[newpos]) == 0)
                 return newpos;
 
-            if ((this.compare(val, this.array[newpos]) == 1 && _ascending)||
-            (this.compare(val, this.array[newpos]) == -1 && !_ascending)){
+            if ((val.compareTo( this.array[newpos]) == 1 && _ascending)||
+                    (val.compareTo( this.array[newpos]) == -1 && !_ascending)){
                 lpos = newpos + 1;
             }
-            if ((this.compare(val, this.array[newpos]) == -1 && _ascending) ||
-                    (this.compare(val, this.array[newpos]) == 1 && !_ascending))
+            if ((val.compareTo( this.array[newpos]) == -1 && _ascending) ||
+               (val.compareTo( this.array[newpos]) == 1 && !_ascending))
                 rpos = newpos - 1;
-            }
+        }
         return -1; //
     }
 
 
     public void delete(T val)
     {
-       int val_index = this.find(val);
+        int val_index = this.find(val);
 
-       if (val_index >= this.count || val_index < 0) {
+        if (val_index >= this.count || val_index < 0) {
             throw new ArrayIndexOutOfBoundsException("Bad index");
         }
 
@@ -149,11 +150,11 @@ public class OrderedListArr<T>
 
     public void clear(boolean asc)
     {
-       for (int i = 0; i < this.count; i++) {
+        for (int i = 0; i < this.count; i++) {
             this.array[i] = null;
         }
-       this.count = 0;
-       makeArray(16);
+        this.count = 0;
+        makeArray(16);
         _ascending = asc;
     }
 
@@ -170,5 +171,4 @@ public class OrderedListArr<T>
 
 
 }
-
 
