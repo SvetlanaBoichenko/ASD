@@ -266,11 +266,12 @@ public class OrderedList<T extends Comparable>
         OrderedList<Integer> retlist = null;
 
         while (L1 != null || L2 != null) {
-            if (L1.value < L2.value) {
+            if (L1.value.compareTo(L2.value) < 0){
                 retlist = list1;
                 break;
             }
-            if (list1.head.value > list2.head.value) {
+            if (list1.head.value.compareTo(list2.head.value) > 0)
+            {
                 L2 = list1.head;
                 L1 = list2.head;
                 retlist = list2;
@@ -281,7 +282,8 @@ public class OrderedList<T extends Comparable>
         }
 
         while (L1 != null && L2 != null) {
-            if (L2.value <= L1.value) {  // список 1 больше 2
+            if (L2.value.compareTo(L1.value) <= 0)
+            {  // список 1 больше 2
                 Node<Integer> newnod = new Node<> (L2.value);
                 Insert(L1, newnod);
                 L2 = L2.next;
