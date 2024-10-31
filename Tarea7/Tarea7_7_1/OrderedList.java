@@ -13,7 +13,8 @@ class Node<T>
     }
 }
 
-public class OrderedList<T>
+//public class OrderedList<T>
+public class OrderedList<T extends Comparable>
 {
     public Node<T> head, tail;
     private boolean _ascending;// voshod
@@ -42,11 +43,6 @@ public class OrderedList<T>
             return -1;
 
         return 0;
-        //  if ((Integer)v1 < (Integer)v1)    // -1 if v1 < v2
-        //      return -1;
-        //  if ((Integer)v1 > (Integer)v1)  // +1 if v1 > v2
-        //      return 1;
-        // 0 if v1 == v2
     }
 
     public void add(T value)
@@ -64,10 +60,14 @@ public class OrderedList<T>
         if (this._ascending) {
             ascendval = 1;
         }
+        // while (curnod != null && (this.compare(value, (T) curnod.value)) == ascendval) {
+       //     curnod = curnod.next;
+       // }
 
-        while (curnod != null && (this.compare(value, (T) curnod.value)) == ascendval) {
+        while (curnod != null && newnod.value.compareTo(curnod.value)== ascendval) {
             curnod = curnod.next;
         }
+
         if (curnod == null) {
             this.tail.next = newnod;
             newnod.prev = this.tail;
@@ -98,7 +98,7 @@ public class OrderedList<T>
     {
         Node<T> curnod = this.head;
         while (curnod != null) {
-            if (compare((T) curnod.value, val) == 0)
+            if (curnod.value.compareTo(val)== 0)
                 return curnod;
 
             curnod = curnod.next;
@@ -111,7 +111,7 @@ public class OrderedList<T>
             return;
 
         Node<T> curnod = this.head;
-        if (compare((T) curnod.value, val) == 0)
+        if (curnod.value.compareTo(val)== 0)
         {
             this.head = curnod.next;
             if (this.head != null)
@@ -121,7 +121,7 @@ public class OrderedList<T>
 
         curnod = this.head.next;
         while (curnod != null){
-            if (compare((T) (curnod.value), val) == 0){
+            if (curnod.value.compareTo(val)== 0){
                 break;
             }
             curnod = curnod.next;
@@ -156,7 +156,7 @@ public class OrderedList<T>
         return n;
     }
 
-//----------------------------------------------------------
+    //---------------8-------------------------------------------
     public void DelDublicate (){
         Node<T> curnod = this.head;
         Node<T> nextnod = this.head.next;
@@ -166,7 +166,8 @@ public class OrderedList<T>
 
         while (curnod != null && nextnod != null) {
             Node tmp = curnod;
-            if (compare((T) (curnod.value), (nextnod.value)) == 0){
+
+            if (curnod.value.compareTo(nextnod.value)== 0) {
                 this.delete (nextnod.value);
                 curnod = curnod.next;
                 nextnod = curnod.next;
@@ -177,7 +178,7 @@ public class OrderedList<T>
         }
     }
 
-    //--------------------------------------------------------
+    //----------------11----------------------------------------
     public T SumDublicate (){
         Node<T> curnod = this.head;
         Node<T> nextnod = this.head.next;
@@ -188,18 +189,18 @@ public class OrderedList<T>
         int cursum = 1, oldsum = 0, maxsum = 0;
         T el = null;
         for (int i = 0; i < this.count()-1; i++) {
-            if (compare((T) (curnod.value), (nextnod.value)) == 0) {
-               cursum ++;
+            if (curnod.value.compareTo(nextnod.value)== 0) {
+                cursum ++;
                 curnod = nextnod;
                 nextnod = curnod.next;
 
                 if (cursum > maxsum && el != curnod.value) {
                     el = curnod.value;
                 }
-                    continue;
+                continue;
             }
             if (cursum > maxsum) {
-             //   el = curnod.value;
+                //   el = curnod.value;
                 maxsum = cursum;
             }
             oldsum = cursum;
@@ -211,37 +212,38 @@ public class OrderedList<T>
         return el;
     }
 
- //--------------------------------------------
-  public boolean LookForSublist (OrderedList<T> sublist) {
-      Node<T> curnod = this.head;
-      Node<T> subnod = sublist.head;
-      boolean b = false;
+    //----------------10----------------------------
+    public boolean LookForSublist (OrderedList<T> sublist) {
+        Node<T> curnod = this.head;
+        Node<T> subnod = sublist.head;
+        boolean b = false, oldb = false;
+        boolean res = false;
 
-      if(curnod == null || subnod == null)        //|| nextnod == null)
-          return b;
+        if(curnod == null || subnod == null)        //|| nextnod == null)
+            return b;
 
-      T val = null;
-      int n = 0;
-      while (curnod != null && subnod != null) {
-          if (compare((T) (curnod.value), (subnod.value)) == 0) {
-             b = true;    // first duplicate
-          }
-          else{
-              b = false;
-          }
-          curnod = curnod.next;
-          if (b == true)
-            subnod = subnod.next;
-          else
-              subnod = sublist.head;
-          }
-      return b;
+        while (curnod != null && subnod != null) {
+            b = false;
+
+            if (curnod.value.compareTo(subnod.value)== 0) {
+                oldb = true;  // flag of first nod = subnod becaus its an ordered list
+                b = true;
+            }
+
+            curnod = curnod.next;
+            if (b == true && oldb == true)
+                subnod = subnod.next;
+
+            if (b == false && oldb == true)
+                return false;
+        }
+        return b;
     }
-//-----------------OrderLists----------------------
+    //-----------------OrderLists----------------------
     // funcs
     static void Insert (Node curnod, Node newnod) {
-       if (curnod ==null || newnod == null)
-           return;
+        if (curnod ==null || newnod == null)
+            return;
         curnod.prev.next = newnod;
         newnod.next = curnod;
         newnod.prev = curnod.prev;
@@ -257,7 +259,7 @@ public class OrderedList<T>
         list.tail = newnod;
         return true;
     }
-//--------------
+    //------------9--------------------
     public OrderedList Orderlists (OrderedList<Integer> list1,OrderedList<Integer> list2 ) {
         Node<Integer> L1 = list1.head;
         Node<Integer> L2 = list2.head;
@@ -290,10 +292,10 @@ public class OrderedList<T>
 
         while (L2 != null) {
             Node<Integer> nod = new Node<>(L2.value);
-           boolean b =  addInTail(retlist,nod);
-           if (b == false)
-               break;
-           L2 = L2.next;
+            boolean b =  addInTail(retlist,nod);
+            if (b == false)
+                break;
+            L2 = L2.next;
         }
 
         return retlist;
@@ -311,6 +313,8 @@ public class OrderedList<T>
         }
         return r;
     }
-}
+
+
+} 
 
 
