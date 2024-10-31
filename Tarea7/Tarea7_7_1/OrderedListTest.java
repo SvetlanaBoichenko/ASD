@@ -1,4 +1,3 @@
-
 import com.sun.source.tree.AssertTree;
 import org.junit.Test;
 import java.util.ArrayList;
@@ -84,7 +83,7 @@ public class OrderedListTest {
         list2.delete(11);
         list2.add(15);
 
-         b = list1.LookForSublist (list2);
+        b = list1.LookForSublist (list2);
         assertTrue(b == false);
 
     }
@@ -127,4 +126,3 @@ public class OrderedListTest {
         assertTrue (list1.SumDublicate() == res);
     }
 }
-
