@@ -162,7 +162,7 @@ public class OrderedList<T extends Comparable>
         Node<T> curnod = this.head;
       
         for (int i = 0; i < n; i++) {
-            if (curnod.next == null)
+            if (curnod == null || curnod.next == null)
                 break;
             if (curnod.value.compareTo(curnod.next.value) == 0) {
                 this.delete (curnod.next.value);
