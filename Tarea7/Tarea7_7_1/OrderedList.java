@@ -159,9 +159,8 @@ public class OrderedList<T extends Comparable>
     //---------------8-------------------------------------------
     public void DelDublicate() {
         Node<T> curnod = this.head;
-        Node<T> nextnod = null;
-
-        for (nextnod = curnod; nextnod != null; nextnod = curnod.next) {
+     
+        for ( Node<T> nextnod = curnod; nextnod != null; nextnod = curnod.next) {
             if (curnod.value.compareTo(curnod.next.value) == 0) {
                 this.delete (curnod.next.value);
             }
