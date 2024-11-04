@@ -110,7 +110,5 @@ public class DynHashArray
     }
 
 
-
-    public static void main(String[] args) {}
-
 }
+
