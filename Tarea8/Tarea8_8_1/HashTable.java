@@ -48,7 +48,7 @@ public class HashTable
         }
         return ind;
     }
-//-------------------------------------------------------------
+//-------------hash 1------------------------------------------------
     public int hashFun(String value) {
     if (value.equals(""))
         return 0;
@@ -61,8 +61,9 @@ public class HashTable
         return (ind % this.size);
     }
 
-    static double Z = 0.618;
-    public int hashFun2 (String key){
+//-----------hash2------------ 
+    static double Z = 0.618; 
+   public int hashFun2 (String key){
 
     int key2 = 0;
     for ( int i = 0; i< key.length(); i++) {
@@ -74,6 +75,7 @@ public class HashTable
 
     return key2;
 }
+
 
     public int put2(String value)
     {
