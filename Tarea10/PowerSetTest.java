@@ -47,13 +47,25 @@ public class PowerSetTest {
     }
 
     @Test
-    public void testun() {
+    public void testunion() {
         PowerSet pst1 = new PowerSet();
+        PowerSet pst11 = new PowerSet();
+        PowerSet pst12 = pst1.union(pst11);
+
         pst1.put("ana");
         pst1.put("yo");
         PowerSet pst2 = new PowerSet();
         pst2.put("yo");
         pst2.put("Olga");
+
+
+        pst12 = pst1.union(pst11);
+
+        pst11 = null;
+        pst12 = pst1.union(pst11);
+
+
+         pst12 = pst1.union(pst11);
 
         PowerSet pst3 = pst1.union(pst2);
         assertTrue(pst3.size() == 3);
@@ -91,11 +103,12 @@ public class PowerSetTest {
         pst2.put("ana");
         pst2.put("no");
         pst2.put("yes");
+        pst2.put("yes2");
 
         PowerSet pst3 = pst1.difference(pst2);
         assertEquals(pst3.size(), 1);
         pst3 = pst2.difference(pst1);
-        assertEquals(pst3.size(), 2);
+        assertEquals(pst3.size(), 3);
     }
 
     @Test
@@ -106,6 +119,8 @@ public class PowerSetTest {
         PowerSet pst2 = new PowerSet();
         pst2.put("yo");
         assertEquals(pst1.isSubset(pst2), true);
+        assertEquals(pst2.isSubset(pst1), false);
+
         pst2.put("Olga");
         assertEquals(pst1.isSubset(pst2), false);
     }
@@ -113,16 +128,16 @@ public class PowerSetTest {
     @Test
     public void testintersections() {
         PowerSet pst1 = new PowerSet();
-            pst1.put("ana");
-            pst1.put("yo");
-            pst1.put("juan");
-            pst1.put("olga");
-            pst1.put("olga2");
+        pst1.put("ana");
+        pst1.put("yo");
+        pst1.put("juan");
+        pst1.put("olga");
+        pst1.put("olga2");
         PowerSet pst2 = new PowerSet();
-            pst2.put("olga");
-            pst2.put("yo");
-            pst2.put("ana");
-            pst2.put("a");
+        pst2.put("olga");
+        pst2.put("yo");
+        pst2.put("ana");
+        pst2.put("a");
 
         PowerSet pst3 = pst1.intersection(pst2);
         assertTrue(pst3.size() == 3);
