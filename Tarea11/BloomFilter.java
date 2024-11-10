@@ -3,13 +3,12 @@ import java.util.*;
 public class BloomFilter
 {
     public int filter_len;
-  //  public BitSet  bitSet;
-    int bitnum;// = 0x0;
+
+    int bitnum;//
     public BloomFilter(int f_len)
     {
         bitnum = 0x0;
         filter_len = f_len;
-      //  bitSet = new BitSet (filter_len); // создаём битовый массив длиной f_len ..
     }
 
     public int hash1(String str1)
@@ -57,8 +56,7 @@ public class BloomFilter
     }
 
 
-    public static void main(String[] args) {
-        BloomFilter b = new BloomFilter(12);
     }
 
-    }
+
+
