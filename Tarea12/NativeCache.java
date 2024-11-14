@@ -11,6 +11,7 @@ public class NativeCache<T>
     {
         size = sz;
         slots = new String[size];
+        hits = new int[size];
         values = (T[]) Array.newInstance(clazz, this.size);
     }
 
@@ -30,12 +31,16 @@ public class NativeCache<T>
     public int rindex (String key){   //real index for same hash & dif key
         int first_index = this.hashFun(key);
         int i = first_index;
-        while (this.slots[i] != null && this.slots[i] != key) {
+      //  while (this.slots[i] != null && this.slots[i] != key)
+        for (int x = i; x < this.slots.length; x++) {
+            if (this.slots[i] == null || this.slots[i] == key) {
+                return i;
+            }
             i = (i + 1) % this.size;
             if (i == first_index) // stop cicle
                 return -1;
         }
-        return i;
+        return -1;
     }
 
     public int indbadvalue() {
@@ -57,7 +62,7 @@ public class NativeCache<T>
         int index = this.rindex(key);
 
         if (index < 0) {            //There is not libres places
-           index = indbadvalue();   // ret less used index
+            index = indbadvalue();   // ret less used index
             this.hits[index] = 0;
         }
         this.slots[index] = key;    // occupe less used cell
@@ -75,7 +80,7 @@ public class NativeCache<T>
         return null;
     }
 
-public static void main(String[] args) {
-        System.out.println("++!");
-    }
-}
+   
+} 
+
+
