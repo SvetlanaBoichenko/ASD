@@ -127,17 +127,6 @@ public class DictOrderedList <T extends Comparable> {//
     }
 
 
-
-    public static void main(String[] args) {
-        String str2 = "Ana1!";
-        String str3 = "Ana2333";
-        int result = str2.compareTo(str2);
-        System.out.println(result);
-        result = str2.compareTo(str3);
-        System.out.println(result);
-        result = str3.compareTo(str2);
-        System.out.println(result);
-
-    }
-
 }
+
+
