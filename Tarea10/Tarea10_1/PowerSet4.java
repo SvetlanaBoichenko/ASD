@@ -101,7 +101,7 @@ public class PowerSet4
         return true;
     }
 
-//----------------------------------------vmesto obrabotki strok
+//----------------------------------------
     public PowerSet4 decart(PowerSet4 set2)
     {
         PowerSet4 res = new PowerSet4();
