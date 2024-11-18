@@ -48,7 +48,7 @@ public class BloomFilter3
     }
 
     public void remove(String str1)
-    {   // add str1 to filter
+    {   // 
         if (isValue(str1))
         {
             int mask = getmask (str1);
@@ -74,8 +74,8 @@ public class BloomFilter3
         return true;
     }
 
-    public static void main(String[] args) {
-        System.out.println("++!");
-    }
+  
 
 }
+
+
