@@ -1,5 +1,5 @@
 
-class lapareja  {
+class lapareja  {     // couple key_value
     public Integer value;
     public String key;
 
