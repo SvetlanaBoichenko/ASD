@@ -102,7 +102,7 @@ public class PowerSet4
     }
 
 //----------------------------------------vmesto obrabotki strok
-    public PowerSet4 cart(PowerSet4 set2)
+    public PowerSet4 decart(PowerSet4 set2)
     {
         PowerSet4 res = new PowerSet4();
         for (String key1 : this.ptab.keySet())
