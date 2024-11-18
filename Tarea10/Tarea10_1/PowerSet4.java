@@ -3,7 +3,7 @@ import java.util.*;
 public class PowerSet4
 {
     Hashtable <String, Integer> ptab;
-    // Hashtable <T, T> ptab2;
+
     public PowerSet4() {
         this.ptab = new Hashtable <>(); // your realisation the powerset
     }
@@ -101,7 +101,7 @@ public class PowerSet4
         return true;
     }
 
-    // bmesto obrabotki strok
+//----------------------------------------vmesto obrabotki strok
     public PowerSet4 cart(PowerSet4 set2)
     {
         PowerSet4 res = new PowerSet4();
@@ -116,6 +116,7 @@ public class PowerSet4
         return res;
     }
 
+   //-----------------------------------------------------
     public PowerSet4 multi_intersection(PowerSet4 [] set2_array)
     {
         PowerSet4 res = (new PowerSet4()).union(this);
@@ -127,8 +128,7 @@ public class PowerSet4
     }
 
 
-    public static void main(String[] args) {
-        System.out.println("++!");
-    }
 
 }
+
+
