@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class PowerSet4
+public class PowerSet
 {
     Hashtable <String, Integer> ptab;
 
