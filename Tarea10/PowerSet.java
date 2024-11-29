@@ -1,68 +1,104 @@
 import java.util.*;
 
-public class PowerSet
+public class PowerSet4
 {
     Hashtable <String, Integer> ptab;
 
-    public PowerSet() {
-        this.ptab = new Hashtable <>(); //
+    public PowerSet4() {
+        this.ptab = new Hashtable <>(); // your realisation the powerset
     }
 
     public int size() {
-        return (this.ptab.size());   // количество разных эл
+        return this.ptab.size();   // 
     }
 
-    public int card() {
-        int n = 0;   // количество всех эл
-        for (String key : this.ptab.keySet() ){
-                n += getvalue(key);
-        }
-        return n;
-    }
+    public void put(String value) {
+        this.ptab.put(value, 1);// key, value = 1;
 
-    public void put (String value) {
-       if (this.get(value) == false) {      // val == null
-           this.ptab.put(value, 1);         // key, value = 1;
-            return;
-       }
-        int val = this.getvalue(value); //val-is value of the key
-        this.ptab.put(value, val+1);    // val != null
     }
-
 
     public boolean get(String value) {
-        return (this.ptab.get(value) != null);
-    }
+        if (this.ptab.get(value) != null)
+            return true;
 
-    public int getvalue(String value) {
-        return (this.ptab.get(value) );
+        return false;
     }
-
 
     public boolean remove(String value) {
         if (this.get(value) == false)
             return false;
         Integer res = this.ptab.remove(value);
         return (this.ptab.get(value) == null);
+
     }
 
-    public boolean remove1el(String value) {
-        if (this.get(value) == false)
-            return false;
-        int nelements = this.getvalue(value);// value - is the key here
-
-        if (nelements == 1) {
-            Integer res = this.ptab.remove(value);
-            return (this.ptab.get(value) == null);
+    public PowerSet4 intersection(PowerSet4 set2) {
+        PowerSet4 res = new PowerSet4();
+        for (String key : set2.ptab.keySet() ){
+            if (this.get(key)){
+                res.put(key);
+            }
         }
-        this.ptab.put(value, nelements-1);
+        return (res);
+    }
+
+    public PowerSet4 union(PowerSet4 set2) {
+        if (set2 == null) {
+            return null;
+        }
+        PowerSet4 res = new PowerSet4();
+        for (String key : this.ptab.keySet()) {
+            if (!set2.get(key)) {
+                res.put(key);
+            }
+        }
+        for (String key : set2.ptab.keySet()){
+            res.put(key);
+        }
+        return res;
+    }
+
+    public PowerSet4 difference(PowerSet4 set2)
+    {
+        if (set2 == null) {
+            return null;
+        }
+        PowerSet4 res = new PowerSet4();
+
+        for (String key : this.ptab.keySet() ){
+            if (! set2.get(key)){
+                res.put(key);
+            }
+        }
+        return (res); //
+    }
+
+    public boolean isSubset(PowerSet4 set2) {
+        if (set2 == null) {
+            return false;
+        }
+
+        for (String key : set2.ptab.keySet()) {
+            if (!this.get(key)) {
+                return false;
+            }
+        }
         return true;
     }
 
-    public static void main(String[] args) { }
-}
+    public boolean equals(PowerSet4 set2)// <T>
+    {
+        if (set2 == null) {
+            return false;
+        }
+        if (set2.size() != this.size())
+            return false;
+        for (String key : set2.ptab.keySet()) {
+            if (!this.get(key)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-//6.* (бонус +500) Реализуйте мульти-множество (Bag),
-// в котором каждый элемент может присутствовать несколько раз.
-// Добавьте методы добавления элементов, удаления одного экземпляра элемента
-// и получения списка всех элементов с их частотами (сколько раз встречаются).
+}
