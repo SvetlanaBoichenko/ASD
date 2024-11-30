@@ -2,7 +2,6 @@ import java.lang.reflect.Array;
 import java.util.Objects;
 
 
-
 class NativeDictionary2n <T>
 {
     static int sz = 32;
@@ -67,6 +66,8 @@ class NativeDictionary2n <T>
         }
         return null;
     }
-public static void main(String[] args) {}
+
+    
 }
+
 
