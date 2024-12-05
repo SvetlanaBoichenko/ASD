@@ -302,7 +302,7 @@ public class LinkedList2
         return retList;
     }
 
-    public static void main(String[] args) { }
+    
 }
 
 class Node
