@@ -317,5 +317,36 @@ public class LinkedList2Test {
         assertTrue (Ls3.tail.prev.prev.value == 8);
         assertTrue (Ls3.tail.prev.prev.prev.value == 5);
         assertTrue (Ls3.tail.prev.prev.prev.prev.value == 5);
+    } 
+     @Test
+    public void iscicle () {
+        LinkedList2 Ls = new LinkedList2();
+
+        boolean b = Ls.iscicle();
+        assertTrue (b == false);
+
+        Node n1 = new Node (24);
+        Node n2 = new Node (3);
+        Node n3 = new Node (8);
+        Node n4 = new Node (5);
+        Node n5 = new Node (1);
+        Node n6 = new Node (10);
+        Node n7 = new Node (0);
+        Ls.addInTail(n1);
+        Ls.addInTail(n2);
+        Ls.addInTail(n3);
+        Ls.addInTail(n4);
+        Ls.addInTail(n5);
+        Ls.addInTail(n6);
+        Ls.addInTail(n7);
+
+         b = Ls.iscicle();
+        assertTrue (b == false);
+
+        Ls.head.prev = Ls.tail;
+        Ls.tail.next = Ls.head;
+        b = Ls.iscicle();
+        assertTrue (b == true);
+
     }
 }
