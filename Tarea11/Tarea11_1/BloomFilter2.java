@@ -46,11 +46,11 @@ public class BloomFilter2
         this.bitnum = this.bitnum | mask;
     }
 
-    public void remove(String str1)
-    {   // add str1 to filter
-        int mask = getmask (str1);
-        this.bitnum = this.bitnum | mask;
-    }
+  //  public void remove(String str1)
+  //  {   // add str1 to filter
+  //      int mask = getmask (str1);
+  //      this.bitnum = this.bitnum | mask;
+  //  }
 
     public boolean isValue(String str1)
     {
