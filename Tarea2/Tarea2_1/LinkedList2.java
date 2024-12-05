@@ -245,7 +245,7 @@ public class LinkedList2
             cur_node = cur_node.next;
         }
     }
-//-------------9*---------------------------------
+    //-------------9*---------------------------------
     public void rotatelist () {
         Node n1 = this.head;
         Node n2 = this.tail;
@@ -272,7 +272,7 @@ public class LinkedList2
         retlist.addInTail(curnod);
         return retlist;
     }
-//------------------11*-----------------------------
+    //------------------11*-----------------------------
     public void Sortlist () {
         LinkedList2 sortlist = new LinkedList2();
         for (Node n = this.head; n != null; n = n.next) {
@@ -285,24 +285,32 @@ public class LinkedList2
             n.value = snod.value;
             snod = snod.next;
         }
-         sortlist.clear();
+        sortlist.clear();
     }
 
     //- ---------12*---------------------------------------------
     public LinkedList2  unitlists (LinkedList2 L2) {
-          L2.Sortlist();
-          this.Sortlist();
-          Node n1= this.head;
+        L2.Sortlist();
+        this.Sortlist();
+        Node n1= this.head;
 
         LinkedList2 retList = new LinkedList2();
         for (Node n2 = L2.head; n2 != null; n2 = n2.next) {
             Node n3 = new Node(n2.value);
             retList = moveminvalue (n3, this);
-            }
+        }
         return retList;
     }
 
-    
+//----------------is-cikl----------------
+    public boolean iscicle () {
+      if (this.head == null || this.tail == null)
+          return false;
+
+        return (this.head.prev == this.tail && this.tail.next == this.head);
+}
+
+
 }
 
 class Node
@@ -317,5 +325,4 @@ class Node
         prev = null;
     }
 }
-
 
