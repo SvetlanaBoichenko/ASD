@@ -63,14 +63,14 @@ public class HashTable
         return ind;
     }
 
-//--------------------------------------
+//---------------зад 5 dd-----------------------
     public void dd (){
         for (int i = 0; i < this.size*2; i++) {
             this.put(String.valueOf(i));
         }
     }
 
-
+//----------Hash + Sal----------
     public int ShashFun(String value)
     {
         if (value.equals(""))
