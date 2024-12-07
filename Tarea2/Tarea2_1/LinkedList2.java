@@ -249,7 +249,6 @@ public class LinkedList2
         }
     }
     //-------------9*---------------------------------
-  //  Лучше(?) использовать готовые методы добавления/удаления узлов
     public void rotatelist () {
         Node n1 = this.head;
         Node n2 = this.tail;
