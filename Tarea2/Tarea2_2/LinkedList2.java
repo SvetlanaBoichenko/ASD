@@ -6,12 +6,8 @@ public class LinkedList2
     public Dum dum2;
 
     public LinkedList2() {
-        this.dum1 = new Dum(0);
-        this.dum1.next = null;
-        this.dum1.prev = null;
-        this.dum2 = new Dum(0);
-        this.dum2.next = null;
-        this.dum2.prev = null;
+        this.dum1 = new Dum();
+        this.dum2 = new Dum();
     };
 
     public void addInTail(Node _item)
@@ -34,7 +30,7 @@ public class LinkedList2
             return null;
 
         Node cur_node = this.dum1.next;          //.next;
-        while (!cur_node.isdum) {
+        while (cur_node!= dum2 && cur_node != dum1) {
             if (cur_node.value == _value)
                 return cur_node;
 
@@ -51,7 +47,7 @@ public class LinkedList2
             return nodes;
 
         Node cur_node = this.dum1.next; //.next
-       for (Node n = dum1.next; n != dum2; n = n.next){
+        for (Node n = dum1.next; n != dum2; n = n.next){
             if (cur_node.value == _value)
                 nodes.add (cur_node);
 
@@ -140,7 +136,6 @@ public class LinkedList2
         _nodeToInsert.prev = _nodeAfter;
     }
 
-    public static void main(String[] args) {}
 }
 
 class Node
@@ -148,21 +143,19 @@ class Node
     public int value;
     public Node next;
     public Node prev;
-    public boolean isdum;
 
     public Node (int _value)
     {
         value = _value;
         next = null;
         prev = null;
-        isdum = false;
     }
 }
 
 class Dum  extends Node
 {
-    public Dum(int _value) {
-        super( _value);
-        isdum = true;
+    public Dum() {
+        super(0);//( _value);
     }
+
 }
