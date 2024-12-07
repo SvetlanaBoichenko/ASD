@@ -61,10 +61,11 @@ public class BloomFilter2
             return true;
         return false;
     }
-
-    public BloomFilter2 union(BloomFilter2 other)
+//----------------3*------------------------------------------
+    public BloomFilter2 union (BloomFilter2 other)
     {
-        BloomFilter2 result = BloomFilter2(this.filter_len)
+       int len = this.filter_len;
+        BloomFilter2 result = new BloomFilter2 (len);
         result.bitnum = this.bitnum | other.bitnum;
         return result;
     }
