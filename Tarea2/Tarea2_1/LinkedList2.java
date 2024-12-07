@@ -338,7 +338,7 @@ public class LinkedList2
         return retList;
     }
 
-    //----------------is-cikl----------------
+    //----------10------is-cikl----------------
     public boolean iscicle () {
         if (this.head == null || this.tail == null)
             return false;
