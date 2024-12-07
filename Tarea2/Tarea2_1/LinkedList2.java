@@ -93,13 +93,16 @@ public class LinkedList2
         }
 
         Node cur_node = this.head.next;          //.next;
+
         while (cur_node != null) {
+            if (cur_node == tail) {
+                this.tail = cur_node.prev;
+                this.tail.next = null;
+                return true;
+            }
             if (cur_node.value == _value) {
                 cur_node.prev.next = cur_node.next;
                 cur_node.next.prev = cur_node.prev;
-
-                if (cur_node == tail)
-                    tail = cur_node.prev;
 
                 cur_node = null;
                 return true;
@@ -246,6 +249,7 @@ public class LinkedList2
         }
     }
     //-------------9*---------------------------------
+  //  Лучше(?) использовать готовые методы добавления/удаления узлов
     public void rotatelist () {
         Node n1 = this.head;
         Node n2 = this.tail;
@@ -260,8 +264,56 @@ public class LinkedList2
             n2 = n2.prev;
         }
     }
-    //-----------------for 11-------------------
-    public LinkedList2 moveminvalue (Node curnod, LinkedList2 retlist)
+
+    //-----------9 with ---change nodes--------------------------------------
+    public void rotatelist2 () {
+        Node n1 = this.head;
+        Node n2 = this.tail;
+
+        int k = this.count()/2;
+        for (int i = 0 ; i < k; i++) {
+            Node tmp1 = new Node(n1.value);
+            Node tmp2 = new Node(n2.value);
+            Node tmp1prev = n1.prev;
+            Node tmp2prev = n2.prev;
+
+            this.remove(n2.value);
+            this.insertAfter(tmp1prev, tmp2);
+            this.insertAfter(tmp2prev, tmp1);
+            this.remove (n1.value);
+
+            n1 = tmp2.next;
+            n2 = tmp1.prev;
+        }
+    }
+
+    //------------------11*-----------------------------
+    public void Sortlist () {
+        LinkedList2 sortlist = new LinkedList2();
+
+        for (Node n1 = this.head; n1 != null; n1 = n1.next) {
+            Node nx = new Node(n1.value);
+            boolean b = false;
+            for (Node n = sortlist.head; n != null; n = n.next) {
+                if (nx.value <= n.value) {
+                    sortlist.insertAfter(n.prev,nx);
+                    b = true;
+                    break;
+                }
+            }
+            if(!b) {
+            sortlist.addInTail(nx); }
+        }
+
+        Node snod = sortlist.head;
+        for (Node n = this.head; n != null; n = n.next) {
+            n.value = snod.value;
+            snod = snod.next;
+        }
+        sortlist.clear();
+    }
+    //-----------------for 12-------------------
+    public LinkedList2 addminvalue (Node curnod, LinkedList2 retlist)
     {
         for (Node n = retlist.head; n != null; n = n.next) {
             if (curnod.value <= n.value) {
@@ -272,23 +324,8 @@ public class LinkedList2
         retlist.addInTail(curnod);
         return retlist;
     }
-    //------------------11*-----------------------------
-    public void Sortlist () {
-        LinkedList2 sortlist = new LinkedList2();
-        for (Node n = this.head; n != null; n = n.next) {
-            Node nx = new Node(n.value);
-            sortlist = moveminvalue (nx, sortlist);
-        }
 
-        Node snod = sortlist.head;
-        for (Node n = this.head; n != null; n = n.next) {
-            n.value = snod.value;
-            snod = snod.next;
-        }
-        sortlist.clear();
-    }
-
-    //- ---------12*---------------------------------------------
+    //----------12*---------------------------------------------
     public LinkedList2  unitlists (LinkedList2 L2) {
         L2.Sortlist();
         this.Sortlist();
@@ -297,21 +334,21 @@ public class LinkedList2
         LinkedList2 retList = new LinkedList2();
         for (Node n2 = L2.head; n2 != null; n2 = n2.next) {
             Node n3 = new Node(n2.value);
-            retList = moveminvalue (n3, this);
+            retList = addminvalue (n3, this);
         }
         return retList;
     }
 
-//----------------is-cikl----------------
+    //----------------is-cikl----------------
     public boolean iscicle () {
-      if (this.head == null || this.tail == null)
-          return false;
+        if (this.head == null || this.tail == null)
+            return false;
 
         return (this.head.prev == this.tail && this.tail.next == this.head);
+    }
+
 }
 
-
-}
 
 class Node
 {
@@ -325,4 +362,3 @@ class Node
         prev = null;
     }
 }
-
