@@ -249,6 +249,7 @@ public class LinkedList2
         }
     }
     //-------------9*---------------------------------
+  //  Лучше... использовать готовые методы добавления/удаления узлов
     public void rotatelist () {
         Node n1 = this.head;
         Node n2 = this.tail;
@@ -286,6 +287,23 @@ public class LinkedList2
         }
     }
 
+//-----------9 with -add nodes--------------------------------------
+    public void rotatelist3 () {
+
+        Node n = this.tail;
+        LinkedList2 rlist = new LinkedList2();
+
+        int k = this.count();
+        for (int i = 0 ; i < k; i++) {
+            Node tmp = new Node(n.value);
+            rlist.addInTail(tmp);
+            n = n.prev;
+        }
+
+        this.head = rlist.head;
+        this.tail = rlist.tail;
+    }
+
     //------------------11*-----------------------------
     public void Sortlist () {
         LinkedList2 sortlist = new LinkedList2();
@@ -304,14 +322,11 @@ public class LinkedList2
             sortlist.addInTail(nx); }
         }
 
-        Node snod = sortlist.head;
-        for (Node n = this.head; n != null; n = n.next) {
-            n.value = snod.value;
-            snod = snod.next;
-        }
-        sortlist.clear();
+        this.head = sortlist.head;
+        this.tail = sortlist.tail;
     }
-    //-----------------for 12-------------------
+    
+//-----------------for 12-------------------
     public LinkedList2 addminvalue (Node curnod, LinkedList2 retlist)
     {
         for (Node n = retlist.head; n != null; n = n.next) {
@@ -324,7 +339,7 @@ public class LinkedList2
         return retlist;
     }
 
-    //----------12*---------------------------------------------
+//----------12*---------------------------------------------
     public LinkedList2  unitlists (LinkedList2 L2) {
         L2.Sortlist();
         this.Sortlist();
@@ -338,16 +353,21 @@ public class LinkedList2
         return retList;
     }
 
-    //----------10------is-cikl----------------
+    //----------------is-cikl----------------
     public boolean iscicle () {
         if (this.head == null || this.tail == null)
             return false;
 
-        return (this.head.prev == this.tail && this.tail.next == this.head);
+        for (Node nx = this.head; nx != null; nx = nx.next){
+
+            for (Node np = nx.prev; np != null;  np = np.prev){
+                if (nx == np)
+                    return true;
+            }
+        }
+        return  false;
     }
-
-}
-
+//--------------------------
 
 class Node
 {
@@ -361,3 +381,5 @@ class Node
         prev = null;
     }
 }
+
+
