@@ -326,7 +326,47 @@ public class LinkedList2
         this.tail = sortlist.tail;
     }
     
-//-----------------for 12-------------------
+
+       //------------------11 sort bubles*-----------------------------
+    public void Sortlist2 () {
+        LinkedList2 sortlist = new LinkedList2();
+
+        Node ncur = this.head;
+
+        for (Node n1 = this.head; n1 != null; n1 = n1.next) {
+            for (Node n2 = ncur; n2 != null; n2 = n2.next) {
+                if (n1.value > n2.value){
+                    Node tmp = n1;
+                    int val = n1.value;
+                    n1.next = n2.next;
+                    n1.prev = n2.prev;
+                    n2.next = tmp.next;
+                    n2.prev = tmp.prev;
+                    n1.value = n2.value;
+                    n2.value = val;
+                    
+                }
+            }
+
+            Node nx = new Node(n1.value);
+            boolean b = false;
+            for (Node n = sortlist.head; n != null; n = n.next) {
+                if (nx.value <= n.value) {
+                    sortlist.insertAfter(n.prev,nx);
+                    b = true;
+                    break;
+                }
+            }
+            if(!b) {
+                sortlist.addInTail(nx); }
+        }
+
+        this.head = sortlist.head;
+        this.tail = sortlist.tail;
+    }
+    
+    
+    //-----------------for 12-------------------
     public LinkedList2 addminvalue (Node curnod, LinkedList2 retlist)
     {
         for (Node n = retlist.head; n != null; n = n.next) {
