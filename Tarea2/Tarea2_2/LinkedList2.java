@@ -30,7 +30,7 @@ public class LinkedList2
             return null;
 
         Node cur_node = this.dum1.next;          //.next;
-        while (cur_node!= dum2 && cur_node != dum1) {
+        while (cur_node.isdum == false) {
             if (cur_node.value == _value)
                 return cur_node;
 
@@ -47,7 +47,7 @@ public class LinkedList2
             return nodes;
 
         Node cur_node = this.dum1.next; //.next
-        for (Node n = dum1.next; n != dum2; n = n.next){
+        for (Node n = dum1.next; n.isdum == false; n = n.next){
             if (cur_node.value == _value)
                 nodes.add (cur_node);
 
@@ -62,12 +62,12 @@ public class LinkedList2
             return false;
         }
         Node cur_node =  this.dum1.next;
-        for (Node n = dum1.next; n != dum2; n = n.next){
+        for (Node n = dum1.next; n.isdum == false; n = n.next){
             if (cur_node.value == _value) {
                 cur_node.prev.next = cur_node.next;
                 cur_node.next.prev = cur_node.prev;
                 cur_node = null;
-                if (dum1.next == dum2) {
+                if (dum1.next.isdum == true) {
                     dum2.prev = null;
                     dum1.next = null;
                 }
@@ -85,7 +85,7 @@ public class LinkedList2
         Node cur_node = this.dum1.next;
 
         Node tmp = null;
-        for (Node n = dum1.next; n != dum2; n = n.next) {
+        for (Node n = dum1.next; n.isdum == false; n = n.next) {
             if (cur_node.value == _value){
                 cur_node.prev.next = cur_node.next;
                 cur_node.next.prev = cur_node.prev;
@@ -94,7 +94,7 @@ public class LinkedList2
                 cur_node = cur_node.next;
                 tmp = null;
 
-                if (this.dum1.next == dum2) {
+                if (this.dum1.next.isdum == true) {
                     this.dum2.prev = null;
                     this.dum1.next = null;
                     return;
@@ -143,12 +143,13 @@ class Node
     public int value;
     public Node next;
     public Node prev;
-
+    boolean isdum;
     public Node (int _value)
     {
         value = _value;
         next = null;
         prev = null;
+        isdum = false;
     }
 }
 
@@ -156,6 +157,7 @@ class Dum  extends Node
 {
     public Dum() {
         super(0);//( _value);
+        isdum = true;
     }
 
 }
