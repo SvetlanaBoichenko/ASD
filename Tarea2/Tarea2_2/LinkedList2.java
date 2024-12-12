@@ -118,7 +118,7 @@ public class LinkedList2
         }
 
         int n = 0;
-        for (Node nod = dum1.next; nod != dum2; nod = nod.next)
+        for (Node nod = dum1.next; nod.isdum == false; nod = nod.next)
             n++;
 
         return n;
