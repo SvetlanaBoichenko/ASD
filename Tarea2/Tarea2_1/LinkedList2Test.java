@@ -246,7 +246,7 @@ public class LinkedList2Test {
         Ls.addInTail(n6);
         Ls.addInTail(n7);
 
-        Ls.Sortlist();
+        Ls.Sortlist2();
 
         assertTrue(Ls.head.value == 0);
         assertTrue(Ls.head.next.value == 1);
@@ -260,7 +260,7 @@ public class LinkedList2Test {
             Node n = new Node(i);
             Ls.addInTail(n);
         }
-        Ls.Sortlist();
+        Ls.Sortlist2();
         Node n = Ls.head;
         for (int i = 0; i <= 10; i++) {
             assertTrue(n.value == i);
@@ -306,7 +306,7 @@ public class LinkedList2Test {
             Node n = new Node(i);
             Ls2.addInTail(n);
         }
-        LinkedList2 Ls3 = Ls2.unitlists(Ls1);
+        LinkedList2 Ls3 = Ls2.unitlists2(Ls1);
 
         assertTrue (Ls3.head.value == 0);
         assertTrue (Ls3.head.next.value == 0);
