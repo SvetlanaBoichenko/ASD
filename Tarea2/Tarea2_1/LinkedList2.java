@@ -315,8 +315,8 @@ public class LinkedList2 {
         n.next.prev =  n.prev;
         n = null;
     }
-   //-------------9*---rotatelist4----------------------------------
-    
+    //-------------9*---rotatelist4----------------------------------
+
     public void rotatelist4() {
         Node n1 = this.head;
         Node n2 = this.tail;
@@ -422,7 +422,7 @@ public class LinkedList2 {
                     a2 = a1.next;
                 }
                 else {
-                   // a2 = a1;
+                    // a2 = a1;
                     a1 = a1.next;
                     a2 = a2.next;
                 }
@@ -430,7 +430,7 @@ public class LinkedList2 {
             count--;
         }
     }
-  //-----------------for 12-------------------
+    //-----------------for 12-------------------
     public LinkedList2 addminvalue(Node curnod, LinkedList2 retlist) {
         for (Node n = retlist.head; n != null; n = n.next) {
             if (curnod.value <= n.value) {
@@ -503,8 +503,35 @@ public class LinkedList2 {
         return retList;
     }
 
+    //------------------12.3-***---------------------------
+    public LinkedList2 unitNlists (LinkedList2[] NList) {
+        LinkedList2 L1 = NList[0];
+
+        for (int i = 1; i < NList.length; i++) {
+            LinkedList2 L2 = L1.unitlists2 (NList[i]);
+            L1 = L2;
+        }
+        return L1;
+    }
+
+    //----------------is-cikl-2---------------
+    public boolean iscicle2() {
+        Node nx = this.head;
+        if (this.count() == 0)
+            return false;
+
+        if (this.head == this.tail)
+            return true;
+
+        for (int i = 0; i < this.count(); i++) {
+            nx = nx.next;
+        }
+        return (nx == this.tail && nx != null);
+    }
+    
+
     //----------------is-cikl----------------
-    public boolean iscicle() {
+        public boolean iscicle() {
         Node nx2 = this.head;
         Node nx3 = nx2;
 
@@ -523,19 +550,19 @@ public class LinkedList2 {
         }
         return false;
     }
- }
+}
 
 //--------------------------
-    class Node
-    {
-        public int value;
-        public Node next;
-        public Node prev;
+class Node
+{
+    public int value;
+    public Node next;
+    public Node prev;
 
-        public Node (int _value) {
-            value = _value;
-            next = null;
-            prev = null;
-        }
+    public Node (int _value) {
+        value = _value;
+        next = null;
+        prev = null;
     }
+}
 
