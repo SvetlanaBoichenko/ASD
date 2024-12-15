@@ -319,10 +319,10 @@ public class LinkedList2Test {
         assertTrue (Ls3.tail.prev.prev.prev.prev.value == 5);
     }
     @Test
-    public void iscicle () {
+    public void iscicle2 () {
         LinkedList2 Ls = new LinkedList2();
 
-        boolean b = Ls.iscicle();
+        boolean b = Ls.iscicle2();
         assertTrue (b == false);
 
         Node n1 = new Node (24);
@@ -340,39 +340,83 @@ public class LinkedList2Test {
         Ls.addInTail(n6);
         Ls.addInTail(n7);
 
-        b = Ls.iscicle();
+        b = Ls.iscicle2();
         assertTrue (b == false);
 
-        Ls.head.prev = Ls.tail;
-        Ls.tail.next = Ls.head;
-        b = Ls.iscicle();
+        Ls.head = Ls.tail;
+        Ls.tail = Ls.head;
+        b = Ls.iscicle2();
         assertTrue (b == true);
     }
     @Test
     public void swab () {
-            LinkedList2 Ls = new LinkedList2();
+        LinkedList2 Ls = new LinkedList2();
 
-            Node n1 = new Node (24);
-            Node n2 = new Node (3);
-            Node n3 = new Node (8);
-            Node n4 = new Node (5);
-            Node n5 = new Node (1);
-            Node n6 = new Node (10);
-            Node n7 = new Node (0);
+        Node n1 = new Node (24);
+        Node n2 = new Node (3);
+        Node n3 = new Node (8);
+        Node n4 = new Node (5);
+        Node n5 = new Node (1);
+        Node n6 = new Node (10);
+        Node n7 = new Node (0);
 
-            Ls.addInTail(n1);
-            Ls.addInTail(n2);
-            Ls.addInTail(n3);
-            Ls.addInTail(n4);
-            Ls.addInTail(n5);
-            Ls.addInTail(n6);
-            Ls.addInTail(n7);
+        Ls.addInTail(n1);
+        Ls.addInTail(n2);
+        Ls.addInTail(n3);
+        Ls.addInTail(n4);
+        Ls.addInTail(n5);
+        Ls.addInTail(n6);
+        Ls.addInTail(n7);
 
-            Ls.changenods (Ls, n1, n1.next);
-            Ls.changenods (Ls, n1, n1.next);
-            Ls.changenods (Ls, n1, n1.next);
-            Ls.changenods (Ls, n1, n1.next);
-            Ls.changenods (Ls, n1, n1.next);
-            Ls.changenods (Ls, n1, n1.next);
+        Ls.changenods (Ls, n1, n1.next);
+        Ls.changenods (Ls, n1, n1.next);
+        Ls.changenods (Ls, n1, n1.next);
+        Ls.changenods (Ls, n1, n1.next);
+        Ls.changenods (Ls, n1, n1.next);
+        Ls.changenods (Ls, n1, n1.next);
+    }
+    @Test
+    public void SortNList () {
+       LinkedList2 Ls = new LinkedList2();
+
+        LinkedList2 Ls1 = new LinkedList2();
+        for (int i = 1; i <= 4; i++) {
+            Node n = new Node(i);
+            Ls1.addInTail(n);
         }
+
+        LinkedList2 Ls2 = new LinkedList2();
+        for (int i = 2; i <= 5; i++) {
+            Node n = new Node(i);
+            Ls2.addInTail(n);
+        }
+
+        LinkedList2 Ls3 = new LinkedList2();
+        for (int i = 0; i <= 3; i++) {
+            Node n = new Node(i);
+            Ls3.addInTail(n);
+        }
+
+        LinkedList2 Ls4 = new LinkedList2();
+        for (int i = 0; i <= 4; i++) {
+            Node n = new Node(i + 2);
+            Ls4.addInTail(n);
+        }
+
+        LinkedList2 [] Lsn = { Ls1, Ls2, Ls3, Ls4 };
+        LinkedList2 ret = Ls.unitNlists (Lsn);
+
+        assertTrue (ret.head.value == 0);
+        assertTrue (ret.head.next.value == 1);
+        assertTrue (ret.head.next.next.value == 1);
+
+        ArrayList<Node> retarr1 = ret.findAll(2);
+        assertTrue (retarr1.size() == 4);
+        retarr1 = ret.findAll(4);
+        assertTrue (retarr1.size() == 3);
+
+        assertTrue (ret.tail.value == 6);
+        assertTrue (ret.tail.prev.value == 5);
+        assertTrue (ret.tail.prev.prev.value == 5);
+    }
 }
