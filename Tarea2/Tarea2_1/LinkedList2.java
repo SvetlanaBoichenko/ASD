@@ -526,7 +526,7 @@ public class LinkedList2 {
         for (int i = 0; i < this.count(); i++) {
             nx = nx.next;
         }
-        return (nx == this.tail && nx != null);
+        return (nx == this.tail);
     }
     
 
