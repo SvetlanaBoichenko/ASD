@@ -514,7 +514,7 @@ public class LinkedList2 {
         return L1;
     }
 
-    //----------------is-cikl-2---------------
+    //---------------10------is-cikl-2---------------
     public boolean iscicle2() {
         Node nx = this.head;
         if (this.count() == 0)
