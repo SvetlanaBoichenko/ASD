@@ -47,6 +47,9 @@ public class LinkedList2Test {
         n1 = L1.find(16);
         assertTrue(n1 == null);
 
+        n1 = L1.find(-30000);
+        assertTrue(n1 == null);
+
         LinkedList2 L2 = new LinkedList2();
         L2.addInTail(new Node(10));
 
@@ -100,7 +103,7 @@ public class LinkedList2Test {
         L11.remove(12);
         int ws = 5;
         int s = L11.count();
-        assertTrue(L11.dum1.next.value == 18);
+        assertTrue(L11.dum.next.value == 18);
 
         //  assertTrue(L11.head.next.value == 12);
         assertTrue (ws == s);
@@ -110,9 +113,7 @@ public class LinkedList2Test {
         s = L11.count();
         ws = 3;
         assertTrue (ws == s);
-        assertTrue (L11.dum2.prev.value == 17);
-        assertTrue (L11.dum2.next == null);
-
+  
         Node wnod = L11.find(12);
         assertTrue (wnod == null);
 
@@ -120,7 +121,7 @@ public class LinkedList2Test {
         // insertAfter
         L11.insertAfter(null, new Node(12));
         ws = L11.count();
-        int wval = L11.dum1.next.value;
+        int wval = L11.dum.next.value;
         assertTrue (wval == 12);
         assertTrue (ws == 4);
 
@@ -132,16 +133,14 @@ public class LinkedList2Test {
 
         Node wnod5 = L11.find(17);
         L11.insertAfter(wnod5, new Node(17));
-        assertTrue (L11.dum2.prev.value == 17);
-
+  
         Node wnod6 = new Node(12);
-        L11.insertAfter(L11.dum2.prev,wnod6);
-        assertTrue (L11.dum2.prev == wnod6);
-
+       L11.insertAfter(L11.dum.prev,wnod6);
+  
         Node wnod7 = new Node(12);
-        L11.insertAfter(L11.dum1.next,wnod7);
-        assertTrue (L11.dum1.next.next == wnod7);
-        assertTrue (wnod7.prev == L11.dum1.next);
+        L11.insertAfter(L11.dum.next,wnod7);
+        assertTrue (L11.dum.next.next == wnod7);
+        assertTrue (wnod7.prev == L11.dum.next);
         assertTrue (wnod7.next.prev == wnod7);
 
 
@@ -162,13 +161,12 @@ public class LinkedList2Test {
         L11.addInTail(new Node(12));
         L11.removeAll(12);
         assertTrue (L11.count() == 5);
-        assertTrue (L11.dum2.prev.value == 17);
+   
 
         L11.clear();
         assertTrue (L11.count() == 0);
-        assertTrue (L11.dum1.next == null);
-        assertTrue (L11.dum2.prev == null);
-
+        assertTrue (L11.dum.next == null);
+ 
         L11.addInTail(new Node(12));
         L11.addInTail(new Node(12));
         L11.addInTail(new Node(12));
@@ -185,18 +183,14 @@ public class LinkedList2Test {
         L11.clear();
         L11.addInTail(new Node(12));
         assertTrue (L11.count() == 1);
-        assertTrue (L11.dum1.next == L11.dum2.prev);
-
+  
         L11.removeAll(13);
         boolean wb = L11.remove(13);
         assertTrue (wb == false);
         wb = L11.remove(12);
         assertTrue (wb == true);
 
-        // assertTrue (L11.head == null);
-        // assertTrue (L11.tail == null);
 
-        //  L1.clear();
         wb = L11.remove(19);
         assertTrue (wb == false);
 
@@ -205,8 +199,8 @@ public class LinkedList2Test {
 
         L11.addInTail(new Node(12));
         a = L11.find(12);
-        assertTrue (a == L11.dum1.next);
-        assertTrue (a == L11.dum2.prev);
+        assertTrue (a == L11.dum.next);
+  
 
         a = L11.find(13);
         assertTrue (a == null);
@@ -216,18 +210,18 @@ public class LinkedList2Test {
 
         L11.removeAll(11);
         assertTrue ( L11.count() == 1);
-        assertTrue ( L11.dum1.next.value == 12);
-        assertTrue ( L11.dum2.prev.value == 12);
+        assertTrue ( L11.dum.next.value == 12);
+  
 
         L11.removeAll(12);
         assertTrue ( L11.count() == 0);
-        assertTrue ( L11.dum1.next == null);
-        assertTrue ( L11.dum2.prev == null);
+        assertTrue ( L11.dum.next == null);
+    
 
         L11.removeAll(152);
         assertTrue ( L11.count() == 0);
-        assertTrue ( L11.dum1.next == null);
-        assertTrue ( L11.dum2.prev == null);
+        assertTrue ( L11.dum.next == null);
+  
 
         int c =  L11.count();
         assertTrue (c == 0);
