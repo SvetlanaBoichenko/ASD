@@ -2,34 +2,35 @@ import java.util.*;
 
 public class LinkedList2
 {
-    public Dum dum1;
-    public Dum dum2;
+    public Dum dum;
 
     public LinkedList2() {
-        this.dum1 = new Dum();
-        this.dum2 = new Dum();
+        this.dum = new Dum();
     }
 
     public void addInTail(Node _item)
     {
-        if (this.dum1.next == null) {
-            this.dum1.next = _item;
-            _item.prev = dum1;
+        if (this.dum.next == null) {
+            this.dum.next = _item;
+            _item.prev = dum;
+            dum.prev = _item;
+            _item.next = dum;
+            return;
         }
         else {
-            this.dum2.prev.next = _item;
-            _item.prev =  this.dum2.prev;
+            this.dum.prev.next = _item;
+            _item.prev =  this.dum.prev;
         }
-        this.dum2.prev = _item;
-        _item.next = dum2;
+        this.dum.prev = _item;
+        _item.next = dum;
     }
 
     public Node find(int _value)
     {
-        if (this.dum1.next == null)
+        if (this.dum.next == null)
             return null;
 
-        Node cur_node = this.dum1.next;          //.next;
+        Node cur_node = this.dum.next;          //.next;
         while (!(cur_node instanceof Dum)) {
             if (cur_node.value == _value)
                 return cur_node;
@@ -43,11 +44,11 @@ public class LinkedList2
     {
         ArrayList<Node> nodes = new ArrayList<Node>();
 
-        if (this.dum1.next == null)
+        if (this.dum.next == null)
             return nodes;
 
-        Node cur_node = this.dum1.next; //.next
-        for (Node n = dum1.next; !(n instanceof Dum); n = n.next){
+        Node cur_node = this.dum.next; //.next
+        for (Node n = dum.next; !(n instanceof Dum); n = n.next){
 
             if (cur_node.value == _value)
                 nodes.add (cur_node);
@@ -59,19 +60,15 @@ public class LinkedList2
 
     public boolean remove (int _value)
     {
-        if (this.dum1 == null | this.dum1.next == null){
+        if (this.dum == null | this.dum.next == null){
             return false;
         }
-        Node cur_node =  this.dum1.next;
-        for (Node n = dum1.next; !(n instanceof Dum); n = n.next){
+        Node cur_node =  this.dum.next;
+        for (Node n = dum.next; !(n instanceof Dum); n = n.next){
             if (cur_node.value == _value) {
                 cur_node.prev.next = cur_node.next;
                 cur_node.next.prev = cur_node.prev;
                 cur_node = null;
-                if (dum1.next instanceof Dum) {
-                    dum2.prev = null;
-                    dum1.next = null;
-                }
                 return true;
             }
             cur_node = cur_node.next;
@@ -81,12 +78,13 @@ public class LinkedList2
 
     public void removeAll(int _value)
     {
-        if (this.dum1 == null || this.dum1.next == null)
+        if (this.dum == null || this.dum.next == null)
             return;
-        Node cur_node = this.dum1.next;
+
+        Node cur_node = this.dum.next;
 
         Node tmp = null;
-        for (Node n = dum1.next; !(n instanceof Dum); n = n.next) {
+        for (Node n = dum.next; !(n instanceof Dum); n = n.next) {
             if (cur_node.value == _value){
                 cur_node.prev.next = cur_node.next;
                 cur_node.next.prev = cur_node.prev;
@@ -95,10 +93,9 @@ public class LinkedList2
                 cur_node = cur_node.next;
                 tmp = null;
 
-                if (this.dum1.next instanceof Dum) {
-                    this.dum2.prev = null;
-                    this.dum1.next = null;
-                    return;
+                if (this.dum.next instanceof Dum) {
+                    this.dum.next = null;
+                   return;
                 }
                 continue;
             }
@@ -108,18 +105,18 @@ public class LinkedList2
 
     public void clear()
     {
-        this.dum1.next = null;
-        this.dum2.prev = null;
+        this.dum.next = null;
+        this.dum.prev = null;
     }
 
     public int count()
     {
-        if (this.dum1.next == null) {
+        if (this.dum.next == null) {
             return  0;
         }
 
         int n = 0;
-        for (Node nod = dum1.next; !(nod instanceof Dum); nod = nod.next)
+        for (Node nod = dum.next; !(nod instanceof Dum); nod = nod.next)
             n++;
 
         return n;
@@ -128,7 +125,7 @@ public class LinkedList2
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert)
     {
         if (_nodeAfter == null) {
-            _nodeAfter = this.dum1;
+            _nodeAfter = this.dum;
         }
         _nodeAfter.next.prev = _nodeToInsert;
         _nodeToInsert.next = _nodeAfter.next;
@@ -156,7 +153,7 @@ class Node
 class Dum  extends Node
 {
     public Dum() {
-        super(0);//( _value);
+        super(-30000);//( _value);
     }
 
 }
