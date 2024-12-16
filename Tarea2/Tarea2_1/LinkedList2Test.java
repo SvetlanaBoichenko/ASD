@@ -306,7 +306,7 @@ public class LinkedList2Test {
             Node n = new Node(i);
             Ls2.addInTail(n);
         }
-        LinkedList2 Ls3 = Ls2.unitlists2(Ls1);
+        LinkedList2 Ls3 = Ls2.unitlists2(Ls2,Ls1);
 
         assertTrue (Ls3.head.value == 0);
         assertTrue (Ls3.head.next.value == 0);
@@ -340,11 +340,18 @@ public class LinkedList2Test {
         Ls.addInTail(n6);
         Ls.addInTail(n7);
 
-        b = Ls.iscicle2();
-        assertTrue (b == false);
+       b = Ls.iscicle2();
+       assertTrue (b == false);
+
+    //    Ls.head.next.next.next = Ls.head.next ;
+
+    //    b = Ls.iscicle2();
+    //    assertTrue (b == true);
+
 
         Ls.head = Ls.tail;
         Ls.tail = Ls.head;
+
         b = Ls.iscicle2();
         assertTrue (b == true);
     }
@@ -377,7 +384,7 @@ public class LinkedList2Test {
     }
     @Test
     public void SortNList () {
-       LinkedList2 Ls = new LinkedList2();
+        LinkedList2 Ls = new LinkedList2();
 
         LinkedList2 Ls1 = new LinkedList2();
         for (int i = 1; i <= 4; i++) {
