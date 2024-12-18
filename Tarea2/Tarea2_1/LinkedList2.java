@@ -3,10 +3,12 @@ import java.util.*;
 public class LinkedList2 {
     public Node head;
     public Node tail;
+    public int ListSize;
 
     public LinkedList2() {
         head = null;
         tail = null;
+       this.ListSize = 0;
     }
 
     public void addInTail(Node _item) {
@@ -19,6 +21,7 @@ public class LinkedList2 {
             _item.prev = tail;
         }
         this.tail = _item;
+        this.ListSize++;
     }
 
     public Node find(int _value) {
@@ -74,6 +77,7 @@ public class LinkedList2 {
         if (this.head.next == null && head.value == _value) { //1 el
             this.head = null;
             this.tail = null;
+            this.ListSize = 0;
             return true;
         }
         if (this.head.next == null) {
@@ -84,6 +88,8 @@ public class LinkedList2 {
             this.head = this.head.next;
             this.head.prev = null;
             tmp = null;
+            this.ListSize--;
+         //   if (ListSize < 0) ListSize = 0;
             return true;
         }
 
@@ -93,6 +99,7 @@ public class LinkedList2 {
             if (cur_node == tail) {
                 this.tail = cur_node.prev;
                 this.tail.next = null;
+                this.ListSize--;
                 return true;
             }
             if (cur_node.value == _value) {
@@ -100,6 +107,7 @@ public class LinkedList2 {
                 cur_node.next.prev = cur_node.prev;
 
                 cur_node = null;
+                this.ListSize--;
                 return true;
             }
             cur_node = cur_node.next;
@@ -114,9 +122,11 @@ public class LinkedList2 {
         if (this.head.next == null && head.value == _value) { //1 el
             this.head = null;
             this.tail = null;
+            this.ListSize = 0;
             return;
         }
         if (this.head.next == null) {
+            this.ListSize = 0;
             return;
         }
 
@@ -135,6 +145,7 @@ public class LinkedList2 {
             if (cur_node.value == _value && cur_node == tail) {
                 tail = cur_node.prev;
                 tail.next = null;
+                this.ListSize --;
                 cur_node = null;
                 break;
             }
@@ -145,6 +156,7 @@ public class LinkedList2 {
                 tmp = cur_node;
                 cur_node = cur_node.next;
                 tmp = null;
+                this.ListSize --;
                 continue;
             }
             cur_node = cur_node.next;
@@ -152,6 +164,7 @@ public class LinkedList2 {
     }
 
     public void clear() {
+        this.ListSize = 0;
         if (this.head == null) {
             this.tail = null;
             return;
@@ -183,9 +196,12 @@ public class LinkedList2 {
         int n = 1; // head!= 0
 
         Node cur_node = this.head.next;
-        while (cur_node != null) {
+        while (cur_node != null ) { //null
             n++;
+            if (cur_node == this.tail)
+                break;
             cur_node = cur_node.next;
+
         }
         return n;
     }
@@ -195,6 +211,7 @@ public class LinkedList2 {
             this.head = _nodeToInsert;
             _nodeToInsert.next = null;
             tail = _nodeToInsert;
+            this.ListSize++;
             return;
         }
         if (_nodeAfter == null) {       // _nodeAfter
@@ -202,6 +219,7 @@ public class LinkedList2 {
             _nodeToInsert.next = this.head;
             this.head = _nodeToInsert;
             this.head.prev = null;
+            this.ListSize ++;
             return;
         }
         if (this.head == _nodeAfter && this.head.next != null) {  // after head, prev = nullthis.head.next.prev = _nodeToInsert;
@@ -209,6 +227,7 @@ public class LinkedList2 {
             _nodeToInsert.next = this.head.next;
             _nodeToInsert.next.prev = _nodeToInsert;
             this.head.next = _nodeToInsert;
+            this.ListSize++;
             return;
         }
         if (this.head == _nodeAfter) {  // after head, prev = null
@@ -216,6 +235,7 @@ public class LinkedList2 {
             this.head.next = _nodeToInsert;
             _nodeToInsert.next = null;
             tail = _nodeToInsert;
+            this.ListSize++;
             return;
         }
         if (_nodeAfter == tail) {
@@ -223,6 +243,7 @@ public class LinkedList2 {
             _nodeToInsert.prev = _nodeAfter;
             _nodeToInsert.next = null;
             tail = _nodeToInsert;
+            this.ListSize++;
             return;
         }
 
@@ -234,6 +255,7 @@ public class LinkedList2 {
                 _nodeToInsert.next = cur_node.next;
                 cur_node.next.prev = _nodeToInsert;
                 cur_node.next = _nodeToInsert;
+                this.ListSize++;
                 return;
             }
             cur_node = cur_node.next;
@@ -457,12 +479,12 @@ public class LinkedList2 {
     }
 
     //----------12**---------------------------------------------
- static   public LinkedList2 unitlists2(LinkedList2 L1, LinkedList2 L2) {
+    public LinkedList2 unitlists2(LinkedList2 L2) {
         L2.Sortlist2();
-        L1.Sortlist2();
+        this.Sortlist2();
         LinkedList2 retList = new LinkedList2();
 
-        Node n1 = L1.head;
+        Node n1 = this.head;
         Node n2 = L2.head;
 
         while (!(n1 == null && n2 == null)) {
@@ -494,47 +516,55 @@ public class LinkedList2 {
                 n1 = n1.next;
                 continue;
             }
-            Node t = new Node(n2.value);
-            retList.addInTail(t);
-            n2 = n2.next;
+            if (n2.value < n1.value) {
+                Node t = new Node(n2.value);
+                retList.addInTail(t);
+                n2 = n2.next;
+            }
         }
-
         return retList;
     }
 
     //------------------12.3-***---------------------------
-   static public LinkedList2 unitNlists (LinkedList2[] NList) {
+    public LinkedList2 unitNlists (LinkedList2[] NList) {
         LinkedList2 L1 = NList[0];
-        LinkedList2 L2 = null;
 
         for (int i = 1; i < NList.length; i++) {
-            L2 = new LinkedList2();
-            L2 = unitlists2 (L1, NList[i]);
-            L1.clear();
-            L1.head = L2.head;
-            L1.tail = L2.tail;
+            LinkedList2 L2 = L1.unitlists2 (NList[i]);
+            L1 = L2;
         }
-        return L2;
+        return L1;
     }
 
     //---------------10------is-cikl-2---------------
     public boolean iscicle2() {
-        Node nx = this.head;
-        if (this.count() == 0)
+        if ( this.ListSize == 0)
             return false;
 
-        if (this.head == this.tail)
-            return true;
+        Node nx = this.head;
 
-        for (int i = 0; i < this.count()-1; i++) {
+        for (int i = 0; i < this.ListSize-1; i++) {
             nx = nx.next;
-
-            if (nx == null)
-                break;
         }
         return !(nx == this.tail);
     }
 
+    //----------------is-cikl3----------------
+    public boolean iscicle3() {
+        Node nx2 = this.head;
+
+        // while(true)
+        for (int i = 0; i < this.ListSize-1; i++) {
+            nx2 = nx2.next;
+
+            if(nx2.next == null)
+                break;
+
+            if (nx2 != nx2.next.prev)
+                return true;
+        }
+        return false;
+    }
 
     //----------------is-cikl----------------
     public boolean iscicle() {
@@ -551,6 +581,7 @@ public class LinkedList2 {
                 nx2 = nx2.next;
                 nx3 = nx2.next;
             }
+
             if (nx2 == tail) break;
         }
         return false;
