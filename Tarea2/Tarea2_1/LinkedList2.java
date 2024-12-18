@@ -558,7 +558,7 @@ public class LinkedList2 {
         Node nx2 = this.head;
 
         // while(true)
-        for (int i = 0; i < this.nodecount-1; i++) {
+        for (int i = 0; i < this.nodecount-2; i++) {
             nx2 = nx2.next;
 
             if(nx2.next == null)
