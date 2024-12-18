@@ -479,13 +479,13 @@ public class LinkedList2 {
         return retList;
     }
 
-    //----------12**---------------------------------------------
-    public LinkedList2 unitlists2(LinkedList2 L2) {
+      //----------12**---------------------------------------------
+ static   public LinkedList2 unitlists2(LinkedList2 L1, LinkedList2 L2) {
         L2.Sortlist2();
-        this.Sortlist2();
+        L1.Sortlist2();
         LinkedList2 retList = new LinkedList2();
 
-        Node n1 = this.head;
+        Node n1 = L1.head;
         Node n2 = L2.head;
 
         while (!(n1 == null && n2 == null)) {
@@ -517,24 +517,27 @@ public class LinkedList2 {
                 n1 = n1.next;
                 continue;
             }
-            if (n2.value < n1.value) {
-                Node t = new Node(n2.value);
-                retList.addInTail(t);
-                n2 = n2.next;
-            }
+            Node t = new Node(n2.value);
+            retList.addInTail(t);
+            n2 = n2.next;
         }
+
         return retList;
     }
 
     //------------------12.3-***---------------------------
-    public LinkedList2 unitNlists (LinkedList2[] NList) {
+   static public LinkedList2 unitNlists (LinkedList2[] NList) {
         LinkedList2 L1 = NList[0];
+        LinkedList2 L2 = null;
 
         for (int i = 1; i < NList.length; i++) {
-            LinkedList2 L2 = L1.unitlists2 (NList[i]);
-            L1 = L2;
+            L2 = new LinkedList2();
+            L2 = unitlists2 (L1, NList[i]);
+            L1.clear();
+            L1.head = L2.head;
+            L1.tail = L2.tail;
         }
-        return L1;
+        return L2;
     }
 
     //---------------10------is-cikl-2---------------
