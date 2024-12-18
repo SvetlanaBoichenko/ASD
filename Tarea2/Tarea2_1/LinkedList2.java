@@ -589,6 +589,7 @@ public class LinkedList2 {
     }
 }
 
+
 //--------------------------
 class Node
 {
@@ -601,4 +602,5 @@ class Node
         next = null;
         prev = null;
     }
-}
+} 
+
