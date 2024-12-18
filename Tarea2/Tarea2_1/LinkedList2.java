@@ -122,11 +122,11 @@ public class LinkedList2 {
         if (this.head.next == null && head.value == _value) { //1 el
             this.head = null;
             this.tail = null;
-            this.ListSize = 0;
+            this.ListSize --;
             return;
         }
         if (this.head.next == null) {
-            this.ListSize = 0;
+         //   this.ListSize = 0;
             return;
         }
 
@@ -140,6 +140,7 @@ public class LinkedList2 {
                 this.head.prev = null;
                 cur_node = cur_node.next;
                 tmp = null;
+                this.ListSize --;
                 continue;
             }
             if (cur_node.value == _value && cur_node == tail) {
