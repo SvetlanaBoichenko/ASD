@@ -3,12 +3,12 @@ import java.util.*;
 public class LinkedList2 {
     public Node head;
     public Node tail;
-    public int ListSize;
+    public int nodecount;
 
     public LinkedList2() {
         head = null;
         tail = null;
-       this.ListSize = 0;
+       this.nodecount = 0;
     }
 
     public void addInTail(Node _item) {
@@ -21,7 +21,7 @@ public class LinkedList2 {
             _item.prev = tail;
         }
         this.tail = _item;
-        this.ListSize++;
+        this.nodecount++;
     }
 
     public Node find(int _value) {
@@ -77,7 +77,7 @@ public class LinkedList2 {
         if (this.head.next == null && head.value == _value) { //1 el
             this.head = null;
             this.tail = null;
-            this.ListSize = 0;
+            this.nodecount = 0;
             return true;
         }
         if (this.head.next == null) {
@@ -88,8 +88,8 @@ public class LinkedList2 {
             this.head = this.head.next;
             this.head.prev = null;
             tmp = null;
-            this.ListSize--;
-         //   if (ListSize < 0) ListSize = 0;
+            this.nodecount--;
+         //   if (nodecount < 0) nodecount = 0;
             return true;
         }
 
@@ -99,7 +99,7 @@ public class LinkedList2 {
             if (cur_node == tail) {
                 this.tail = cur_node.prev;
                 this.tail.next = null;
-                this.ListSize--;
+                this.nodecount--;
                 return true;
             }
             if (cur_node.value == _value) {
@@ -107,7 +107,7 @@ public class LinkedList2 {
                 cur_node.next.prev = cur_node.prev;
 
                 cur_node = null;
-                this.ListSize--;
+                this.nodecount--;
                 return true;
             }
             cur_node = cur_node.next;
@@ -122,11 +122,11 @@ public class LinkedList2 {
         if (this.head.next == null && head.value == _value) { //1 el
             this.head = null;
             this.tail = null;
-            this.ListSize --;
+            this.nodecount --;
             return;
         }
         if (this.head.next == null) {
-         //   this.ListSize = 0;
+         //   this.nodecount = 0;
             return;
         }
 
@@ -140,13 +140,13 @@ public class LinkedList2 {
                 this.head.prev = null;
                 cur_node = cur_node.next;
                 tmp = null;
-                this.ListSize --;
+                this.nodecount --;
                 continue;
             }
             if (cur_node.value == _value && cur_node == tail) {
                 tail = cur_node.prev;
                 tail.next = null;
-                this.ListSize --;
+                this.nodecount --;
                 cur_node = null;
                 break;
             }
@@ -157,7 +157,7 @@ public class LinkedList2 {
                 tmp = cur_node;
                 cur_node = cur_node.next;
                 tmp = null;
-                this.ListSize --;
+                this.nodecount --;
                 continue;
             }
             cur_node = cur_node.next;
@@ -165,7 +165,7 @@ public class LinkedList2 {
     }
 
     public void clear() {
-        this.ListSize = 0;
+        this.nodecount = 0;
         if (this.head == null) {
             this.tail = null;
             return;
@@ -212,7 +212,7 @@ public class LinkedList2 {
             this.head = _nodeToInsert;
             _nodeToInsert.next = null;
             tail = _nodeToInsert;
-            this.ListSize++;
+            this.nodecount++;
             return;
         }
         if (_nodeAfter == null) {       // _nodeAfter
@@ -220,7 +220,7 @@ public class LinkedList2 {
             _nodeToInsert.next = this.head;
             this.head = _nodeToInsert;
             this.head.prev = null;
-            this.ListSize ++;
+            this.nodecount ++;
             return;
         }
         if (this.head == _nodeAfter && this.head.next != null) {  // after head, prev = nullthis.head.next.prev = _nodeToInsert;
@@ -228,7 +228,7 @@ public class LinkedList2 {
             _nodeToInsert.next = this.head.next;
             _nodeToInsert.next.prev = _nodeToInsert;
             this.head.next = _nodeToInsert;
-            this.ListSize++;
+            this.nodecount++;
             return;
         }
         if (this.head == _nodeAfter) {  // after head, prev = null
@@ -236,7 +236,7 @@ public class LinkedList2 {
             this.head.next = _nodeToInsert;
             _nodeToInsert.next = null;
             tail = _nodeToInsert;
-            this.ListSize++;
+            this.nodecount++;
             return;
         }
         if (_nodeAfter == tail) {
@@ -244,7 +244,7 @@ public class LinkedList2 {
             _nodeToInsert.prev = _nodeAfter;
             _nodeToInsert.next = null;
             tail = _nodeToInsert;
-            this.ListSize++;
+            this.nodecount++;
             return;
         }
 
@@ -256,7 +256,7 @@ public class LinkedList2 {
                 _nodeToInsert.next = cur_node.next;
                 cur_node.next.prev = _nodeToInsert;
                 cur_node.next = _nodeToInsert;
-                this.ListSize++;
+                this.nodecount++;
                 return;
             }
             cur_node = cur_node.next;
@@ -539,12 +539,12 @@ public class LinkedList2 {
 
     //---------------10------is-cikl-2---------------
     public boolean iscicle2() {
-        if ( this.ListSize == 0)
+        if ( this.nodecount == 0)
             return false;
 
         Node nx = this.head;
 
-        for (int i = 0; i < this.ListSize-1; i++) {
+        for (int i = 0; i < this.nodecount-1; i++) {
             nx = nx.next;
         }
         return !(nx == this.tail);
@@ -555,7 +555,7 @@ public class LinkedList2 {
         Node nx2 = this.head;
 
         // while(true)
-        for (int i = 0; i < this.ListSize-1; i++) {
+        for (int i = 0; i < this.nodecount-1; i++) {
             nx2 = nx2.next;
 
             if(nx2.next == null)
@@ -589,7 +589,6 @@ public class LinkedList2 {
     }
 }
 
-
 //--------------------------
 class Node
 {
@@ -602,5 +601,4 @@ class Node
         next = null;
         prev = null;
     }
-} 
-
+}
