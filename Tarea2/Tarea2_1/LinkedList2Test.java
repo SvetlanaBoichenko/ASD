@@ -1,4 +1,4 @@
-mport org.junit.Test;
+import org.junit.Test;
 import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.*;
@@ -100,15 +100,18 @@ public class LinkedList2Test {
         L11.remove(12);
         int ws = 5;
         int s = L11.count();
+
         assertTrue(L11.head.value == 18);
         assertTrue(L11.head.prev == null);
         assertTrue(L11.head.next.value == 12);
         assertTrue (ws == s);
+        assertTrue (L11.nodecount == s);
 
         // removeall , find
         L11.removeAll(12);
         s = L11.count();
         ws = 3;
+        assertTrue (L11.nodecount == s);
         assertTrue (ws == s);
         assertTrue (L11.tail.value == 17);
         assertTrue (L11.tail.next == null);
@@ -123,6 +126,7 @@ public class LinkedList2Test {
         int wval = L11.head.value;
         assertTrue (wval == 12);
         assertTrue (ws == 4);
+        assertTrue (L11.nodecount == 4);
 
         Node wnod2 = L11.find(18);
         Node wnod3 =  new Node(1112);
@@ -162,12 +166,14 @@ public class LinkedList2Test {
         L11.addInTail(new Node(12));
         L11.removeAll(12);
         assertTrue (L11.count() == 5);
+        assertTrue (L11.nodecount == 5);
         assertTrue (L11.tail.value == 17);
 
         L11.clear();
         assertTrue (L11.count() == 0);
         assertTrue (L11.head == null);
         assertTrue (L11.tail == null);
+        assertTrue (L11.nodecount == 0);
 
         L11.addInTail(new Node(12));
         L11.addInTail(new Node(12));
@@ -182,6 +188,7 @@ public class LinkedList2Test {
         L11.clear();
         L11.addInTail(new Node(12));
         assertTrue (L11.count() == 1);
+        assertTrue (L11.nodecount == 1);
         assertTrue (L11.head == L11.tail);
 
         L11.removeAll(13);
@@ -213,16 +220,19 @@ public class LinkedList2Test {
 
         L11.removeAll(11);
         assertTrue ( L11.count() == 1);
+        assertTrue (L11.nodecount == 1);
         assertTrue ( L11.head.value == 12);
         assertTrue ( L11.tail.value == 12);
 
         L11.removeAll(12);
         assertTrue ( L11.count() == 0);
+        assertTrue (L11.nodecount == 0);
         assertTrue ( L11.head == null);
         assertTrue ( L11.tail == null);
 
         L11.removeAll(152);
         assertTrue ( L11.count() == 0);
+        assertTrue (L11.nodecount == 0);
         assertTrue ( L11.head == null);
         assertTrue ( L11.tail == null);
 
@@ -417,3 +427,4 @@ public class LinkedList2Test {
         assertTrue (ret.tail.prev.prev.value == 5);
     }
 }
+
