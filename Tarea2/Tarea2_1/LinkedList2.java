@@ -526,26 +526,15 @@ public class LinkedList2 {
     }
 
      //------------------12.3-***---------------------------
-    static public LinkedList2 unitNlists (LinkedList2[] NList) {
+   static public LinkedList2 unitNlists (LinkedList2[] NList) {
         if (NList.length == 0)
             return null;
 
         LinkedList2 L1 = null;
-        
-        int i;
-        for (i = 0; i < NList.length; i++) {
-            if (NList[i].nodecount != 0) {
-                L1 = NList[i];
-                break;
-            }
-        }
-        
-        for (int j = i+1; j < NList.length; j++) {
-            if (NList[j].nodecount != 0) {
-                L1 = unitlists2(L1, NList[j]);
-            }
-        }
-        
+        for (int j = 0; j < NList.length; j++) {
+            L1 = unitlists2(L1, NList[j]);
+        }    
+       
         return L1;
     }
 
