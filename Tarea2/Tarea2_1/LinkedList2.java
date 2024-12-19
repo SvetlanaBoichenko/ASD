@@ -525,19 +525,28 @@ public class LinkedList2 {
         return retList;
     }
 
-    //------------------12.3-***---------------------------
-   static public LinkedList2 unitNlists (LinkedList2[] NList) {
-        LinkedList2 L1 = NList[0];
-        LinkedList2 L2 = null;
+     //------------------12.3-***---------------------------
+    static public LinkedList2 unitNlists (LinkedList2[] NList) {
+        if (NList.length == 0)
+            return null;
 
-        for (int i = 1; i < NList.length; i++) {
-            L2 = new LinkedList2();
-            L2 = unitlists2 (L1, NList[i]);
-            L1.clear();
-            L1.head = L2.head;
-            L1.tail = L2.tail;
+        LinkedList2 L1 = null;
+        
+        int i;
+        for (i = 0; i < NList.length; i++) {
+            if (NList[i].nodecount != 0) {
+                L1 = NList[i];
+                break;
+            }
         }
-        return L2;
+        
+        for (int j = i+1; j < NList.length; j++) {
+            if (NList[j].nodecount != 0) {
+                L1 = unitlists2(L1, NList[j]);
+            }
+        }
+        
+        return L1;
     }
 
     //---------------10------is-cikl-2---------------
