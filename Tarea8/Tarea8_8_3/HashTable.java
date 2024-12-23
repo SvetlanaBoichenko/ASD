@@ -64,21 +64,21 @@ public class HashTable
     }
 
 //---------------зад 5 dd-----------------------
-   public void dd (){
-        for (int i = 0; i < this.size*600; i+= 3) {
-            if (i%2 != 0){
-                this.put (String.valueOf(i));
-                this.put (String.valueOf(i+1));
-                this.put (String.valueOf(i+2));
-                this.put (String.valueOf(i+3));
-                this.put (String.valueOf(i+4));
-            }
-            else
-                this.put (String.valueOf(i*300));
-                this.put (String.valueOf(i*2));
+    public void dd (){
+        Random rnd = new Random();
+        int first = 97;         // ascii
+        int last = first+2+this.size/10;
+        if ((last) > 255 )
+            last = 255;
 
-                this.put (String.valueOf((i+1)*300));
-                this.put (String.valueOf((i+1)*2));
+        for (int i = 0; i < this.size+100; i++) {
+            this.put(rnd.ints(last-first+1, first, last).collect(StringBuilder::new, StringBuilder::appendCodePoint,
+                    StringBuilder::append).toString());
+        }
+
+        for (int i = 0; i < this.size*100; i++) {
+            this.put(rnd.ints(1, 1,this.size*10).collect(StringBuilder::new, StringBuilder::appendCodePoint,
+                        StringBuilder::append).toString());
             }
     }
 
