@@ -65,22 +65,37 @@ public class HashTable
         return ind;
     }
 
-//---------------зад 5 dd-----------------------
-    public void dd (){
+//----------------------------------------------------------------------
+    public String randstring (boolean isfar) {
         Random rnd = new Random();
         int first = 97;         // ascii
-        int last = first+2+this.size/10;
-        if ((last) > 255 )
-            last = 255;
+        int last = 1;
 
-        for (int i = 0; i < this.size+100; i++) {
-            this.put(rnd.ints(last-first+1, first, last).collect(StringBuilder::new, StringBuilder::appendCodePoint,
-                    StringBuilder::append).toString());
+        if (isfar) {            // far
+            last = first + 2 + this.size / 10;
+            if (last > 255)  last = 255;
+
+            size = last - first + 1;
+        }
+        else {                  // near
+            last = first + this.size * 10;
+
+            size = 1;
         }
 
-        for (int i = 0; i < this.size*100; i++) {
-            this.put(rnd.ints(1, 1,this.size*10).collect(StringBuilder::new, StringBuilder::appendCodePoint,
-                        StringBuilder::append).toString());
+        return  (rnd.ints (size, first, last).collect(StringBuilder::new, StringBuilder::appendCodePoint,
+                StringBuilder::append).toString());
+    }
+
+
+    //---------------зад 5 dd-----------------------
+    public void dd () {
+        for (int i = 0; i < this.size + 100; i++) {
+            this.put(randstring (true));
+        }
+
+        for (int i = 0; i < this.size + 100; i++) {
+            this.put(randstring (false));
             }
     }
 
