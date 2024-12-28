@@ -1,37 +1,32 @@
 import java.lang.reflect.Array;
 import java.util.Objects;
 
-
 class NativeDictionary2n <T>
 {
     static int sz = 32;
     public int size;
-    public String [] slots;// keys
+    public Integer [] slots;// String keys
     public T [] values;
 
     public NativeDictionary2n(Class clazz)
     {
         size = sz;
-        slots = new String[size];
+        slots = new Integer [size];
         values = (T[]) Array.newInstance(clazz, this.size);
     }
-
-    public int hashFun(String key)
+    
+    public int hashFun(Integer key)
     { // return real index of slot
-        if (key.equals(""))
-            return 0;
+        if (key == null)
+            return -1;
 
-        int ind = 0;
-        for ( int i = 0; i< key.length(); i++) {
-            ind = ind + (int)(key.charAt(i));
-        }
-        //    ind = ind % this.size;
-        ind = ind & (this.size - 1);
-        return ind;
+        key = key & (this.size - 1);
+        return key;
     }
 
-    public int rindex (String key){   //real index for same hash & dif key
+    public int rindex (Integer key){   //real index for same hash & dif key
         int first_index = this.hashFun(key);
+        
         int i = first_index;
         while (this.slots[i] != null && this.slots[i] != key) {
             i = (i + 1) % this.size;
@@ -41,24 +36,20 @@ class NativeDictionary2n <T>
         return i;
     }
 
-    public boolean isKey(String key)
-    {                                // return true if thereis the key int the Dict
-        int ind = this.rindex(key);  // int value of the String key-element of Slots
-
-        if (ind >= 0 && Objects.equals(slots[ind], key)) {
-            return true;
-        }
-        return false;
+    public boolean isKey(Integer key)
+    {
+        int ind = this.rindex(key);  //
+        return (ind >= 0 && Objects.equals(slots[ind], key));
     }
 
-    public void put(String key, T value)
+    public void put(Integer key, T value)
     {  // Add value to key
         int index = this.rindex(key);
         this.slots[index] = key;
         this.values[index] =  value;
     }
 
-    public T get(String key)
+    public T get(Integer key)
     {// return value for key or null
         int index = this.rindex(key);
         if (index >= 0) {
@@ -68,6 +59,7 @@ class NativeDictionary2n <T>
     }
 
     
-}
+    }
+
 
 
