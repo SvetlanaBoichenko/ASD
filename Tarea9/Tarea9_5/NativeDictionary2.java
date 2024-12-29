@@ -51,15 +51,5 @@ public class NativeDictionary2<T> {
     }
 
 
-
-    public static void main(String[] args) {
-        NativeDictionary2 <Integer> nd2 = new NativeDictionary2 <>(5, Integer.class);
-        Integer val = 0;
-        nd2.put ("A", val);
-
-        int comp = 0;
-        comp = "Ana".compareTo("A");
-        System.out.println( comp);
-    }
-
 }
+
