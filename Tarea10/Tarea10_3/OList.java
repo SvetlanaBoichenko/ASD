@@ -105,6 +105,6 @@ public class OList  {
     }
 
 
-    public static void main(String[] args) {};
+ 
 }
 
