@@ -155,5 +155,6 @@ public class PowerSet4
         return res;
     }
 
-    public static void main(String[] args) {};
+  
 }
+
