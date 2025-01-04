@@ -105,20 +105,12 @@ public class PowerSet4
     }
 
     //----------------------------------------
-    static public Set decart2(PowerSet4 set1,PowerSet4 set2) {
-
-        Set<String> set11 = Set.of("a", "ana");//,"yo");
-        Set<String> set12 = Set.of("a");//, "y", "ana","yo");
-
-        Set<List<String>> cartesianProduct = set11.stream()
-                .flatMap(s1 -> set12.stream().map(s2 -> List.of(s1, s2)))
-                .collect(Collectors.toSet());
-
-
-
-
-
-        Set<List<String>> setresult = new HashSet<List<String>>();
+    static public Set decart2(PowerSet4 set1, PowerSet4 set2) {
+         Set<List<String>> setresult = new HashSet<List<String>>();
+        
+        if(set1.size() == 0 || set2.size() == 0)
+            return setresult;
+        
         for (String key1 : set1.ptab.keySet()) {
             for (String key2 : set2.ptab.keySet())
               if (key2.compareTo(key1) >= 0)
@@ -128,8 +120,9 @@ public class PowerSet4
         }
         return setresult;
     }
-    //перепишите её на PowerSet, просто с помощью циклов.
 
+    
+//-----------------------------------------------------------------
     static public OList decart(PowerSet4 set1,PowerSet4 set2)
     {
         OList cortlist = new OList();
@@ -185,5 +178,6 @@ public class PowerSet4
         return res;
     }
 
-    public static void main(String[] args) {};
-}
+   
+} 
+
