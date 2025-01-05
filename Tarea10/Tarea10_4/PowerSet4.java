@@ -106,17 +106,14 @@ public class PowerSet4
 
     //----------------------------------------
     static public Set decart2(PowerSet4 set1, PowerSet4 set2) {
-         Set<List<String>> setresult = new HashSet<List<String>>();
-        
+      Set<List<String>> setresult = new HashSet<List<String>>();
+
         if(set1.size() == 0 || set2.size() == 0)
             return setresult;
-        
+
         for (String key1 : set1.ptab.keySet()) {
             for (String key2 : set2.ptab.keySet())
-              if (key2.compareTo(key1) >= 0)
-                  setresult.add(List.of(key1, key2));
-                else
-                  setresult.add(List.of(key2, key2));
+                setresult.add(List.of(key1, key2));
         }
         return setresult;
     }
