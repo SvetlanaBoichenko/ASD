@@ -64,9 +64,11 @@ public class BloomFilter2
 //----------------3*------------------------------------------
     public BloomFilter2 union (BloomFilter2 other)
     {
-       int len = this.filter_len;
-        BloomFilter2 result = new BloomFilter2 (len);
-        result.bitnum = this.bitnum | other.bitnum;
+        BloomFilter2 result = new BloomFilter2 (lenthis.filter_len);
+
+        if (other != null && this.filter_len == other.filter_len)
+            result.bitnum = this.bitnum | other.bitnum;
+       
         return result;
     }
 
