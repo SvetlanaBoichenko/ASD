@@ -93,7 +93,7 @@ public class DynArray<T>
     public void  resizemas() {
         int N = this.minsize;
         T[] myarr = this.array;
-        makeArray (this.capacity + minsize*2 );//* 2);
+        makeArray (this.capacity + minsize*2 );
 
         for (int i = 0; i < myarr.length; i++) {
             this.array[i] = myarr[i];
