@@ -82,43 +82,33 @@ public class DynArray<T>
 
     public void isresizemas () {
         if (balance >= this.minsize* 3)
-            resizemas();
+            resize(true);
     }
 
     public void isresizemenos () {
         if ( this.count - 1 < 0.5 * this.capacity)
-            resizemenos();
+            resize(false);
     }
 
-    public void  resizemas() {
-        int N = this.minsize;
-        T[] myarr = this.array;
-        makeArray (this.capacity + minsize*2 );
 
-        for (int i = 0; i < myarr.length; i++) {
-            this.array[i] = myarr[i];
+    public void  resize( boolean ismas) {
+        int N, newcapacity;
+
+        if (ismas) {
+         N = this.minsize;
+         newcapacity = this.capacity + minsize*2;
+        }
+        else {
+            newcapacity = this.capacity * 2/3;
+            if (newcapacity < minsize) {
+                newcapacity = minsize;
+            }
+           N = (int)(newcapacity * 0.1);            
         }
 
+        T[] myarr = this.array;
+        makeArray (newcapacity);
         balance = balance - N;
-    }
-
-    public void  resizemenos() {
-        int ncapacity = 0;
-
-        T[] myarr = this.array;
-
-        ncapacity = this.capacity * 2/3;
-
-        if (ncapacity < minsize) {
-            ncapacity = minsize;
-        }
-            makeArray (ncapacity);
-
-        for (int i = 0; i < ncapacity; i++) {
-            this.array[i] = myarr[i];
-        }
-
-        balance = balance - (int)(ncapacity * 0.1);
     }
 
 
